@@ -5,7 +5,7 @@ function Footer() {
     <div>
       <footer
         className="
-     bg-gradient-to-r from-[#0b0b16] via-[#12122d] to-[#0b0b16] text-white py-12 px-6 md:px-16 lg:px-24"
+     bg-gradient-to-r from-[#040313] via-[#040323] to-[#040313] border-t-2 border-slate-900 mt-[100px] text-white py-12 px-6 md:px-16 lg:px-24"
       >
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between">
           {/* <!-- Left Section (CTA) --> */}
