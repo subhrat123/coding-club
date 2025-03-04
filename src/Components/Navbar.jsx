@@ -1,3 +1,5 @@
+
+import { Link } from 'react-router-dom';
 import React from 'react';
 
 function Navbar() {
@@ -22,7 +24,7 @@ function Navbar() {
             <div>
             {/* Right Authentication Buttons */}
             <div className="flex items-center space-x-10 text-sm opacity-95" style={{ fontFamily: "Inter, sans-serif" }}>
-                <a href="#" className="hover:text-gray-300">Login</a>
+                <Link to="/login" className="hover:text-gray-300">Login</Link>
                 <a href="#" className="px-4 py-2 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-700 text-white shadow-md">
                     Join Now
                 </a>
