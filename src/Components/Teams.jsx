@@ -54,7 +54,7 @@ const Teams = () => {
                 key={item.id}
                 className="text-white p-6 rounded-lg shadow-lg w-[100%]"
               >
-                <div className="flex flex-col glassmorphism w-[50] p-6 justify-center items-center">
+                <div className="flex flex-col  w-[50] p-6 justify-center items-center">
                   <div className="text-xl font-bold">{item.title}</div>
                   <div className="flex max-lg:flex-col text-center items-center gap-4 justify-center w-[70%]">
                     <p className="text-gray-300 mt-2">{item.text}</p>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ProgressBar from '../Components/progress-bar';
-import Avinya from '../Images/avinya.png';
+import ProgressBar from '../components/progress-bar';
 
 const generateDots = (count) => {
   return Array.from({ length: count }, () => ({
@@ -12,42 +11,48 @@ const generateDots = (count) => {
   }));
 };
 
-// const fetchLeetCodeStats = async (username) => {
-//   const query = `
-//     query getUserProfile($username: String!) {
-//       matchedUser(username: $username) {
-//         submitStatsGlobal {
-//           acSubmissionNum {
-//             difficulty
-//             count
-//           }
-//         }
-//       }
-//       allQuestionsCount {
-//         difficulty
-//         count
-//       }
-//     }
-//   `;
+const fetchLeetCodeStats = async (username) => {
+  const response = await fetch("http://localhost:5000/leetcode", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      query: `
+        query getUserProfile($username: String!) {
+          matchedUser(username: $username) {
+            profile {
+              realName
+              userAvatar
+              ranking
+              reputation
+            }
+            submitStatsGlobal {
+              acSubmissionNum {
+                difficulty
+                count
+              }
+            }
+          }
+          allQuestionsCount {
+            difficulty
+            count
+          }
+        }
+      `,
+      variables: { username },
+    }),
+  });
 
-//   const response = await fetch('https://leetcode.com/graphql', {
-//     method: 'POST',
-//     headers: { 'Content-Type': 'application/json' },
-//     body: JSON.stringify({ query, variables: { username } }),
-//   });
-
-//   const data = await response.json();
-//   return {
-//     solved: data?.data?.matchedUser?.submitStatsGlobal?.acSubmissionNum || [],
-//     total: data?.data?.allQuestionsCount || [],
-//   };
-// };
-
+  const data = await response.json();
+  console.log(data);
+  return data;
+};
 
 const Profile = () => {
 
   const [dots, setDots] = useState(generateDots(50));
   const [isEditing, setIsEditing] = useState(false);
+  
+
   const [profile, setProfile] = useState({
     name: "Subhrat Verma",
     email: "abcd@gmail.com",
@@ -57,33 +62,57 @@ const Profile = () => {
     github: "#"
   });
 
-  // const [leetcodeStats, setLeetcodeStats] = useState({
-  //   Easy: { solved: 0, total: 0 },
-  //   Medium: { solved: 0, total: 0 },
-  //   Hard: { solved: 0, total: 0 },
-  // });
+  const [leetcodeStats, setLeetcodeStats] = useState({
+    all:{solved:0,total:0},
+    easy: { solved: 0, total: 0 },
+    medium: { solved: 0, total: 0 },
+    hard: { solved: 0, total: 0 },
+  });
 
-  // useEffect(() => {
-  //   const username = 'subhrat123'; // Replace with your actual LeetCode username
+  const [profilePicUrl, setProfilePicUrl] = useState("");
 
-  //   fetchLeetCodeStats(username).then(({ solved, total }) => {
-  //     const stats = { Easy: { solved: 0, total: 0 }, Medium: { solved: 0, total: 0 }, Hard: { solved: 0, total: 0 } };
 
-  //     solved.forEach(({ difficulty, count }) => {
-  //       if (stats[difficulty]) stats[difficulty].solved = count;
-  //     });
+  useEffect(() => {
+    const username = 'subhrat123'; // Replace with your actual LeetCode username
 
-  //     total.forEach(({ difficulty, count }) => {
-  //       if (stats[difficulty]) stats[difficulty].total = count;
-  //     });
+    fetchLeetCodeStats(username).then((data) => {
+      const { acSubmissionNum } = data.data.matchedUser.submitStatsGlobal;
+      const { allQuestionsCount } = data.data;
 
-  //     setLeetcodeStats(stats);
-  //   });
-  // }, []);
+      setProfilePicUrl (data.data.matchedUser.profile.userAvatar); 
 
-  // const totalSolved = leetcodeStats.Easy.solved + leetcodeStats.Medium.solved + leetcodeStats.Hard.solved;
-  // const totalQuestions = leetcodeStats.Easy.total + leetcodeStats.Medium.total + leetcodeStats.Hard.total;
+      // console.log(acSubmissionNum);
+      const stats = {all:{solved:0,total:0}, easy: { solved: 0, total: 0 }, medium: { solved: 0, total: 0 }, hard: { solved: 0, total: 0 } };
+
+      acSubmissionNum.forEach((item) => {
+        const level = item.difficulty.toLowerCase();
+        // console.log(level);
+        stats[level].solved = item.count;
+      });
+
+      allQuestionsCount.forEach((item) => {
+        const level = item.difficulty.toLowerCase();
+        stats[level].total = item.count;
+      });
+
+      console.log(stats);
+
+      setLeetcodeStats({
+        all:{solved:stats.easy.solved+stats.medium.solved+stats.hard.solved,total:stats.easy.total+stats.medium.total+stats.hard.total},
+        easy: { solved: stats.easy.solved, total: stats.easy.total },
+        medium: { solved: stats.medium.solved, total: stats.medium.total },
+        hard: { solved: stats.hard.solved, total: stats.hard.total },
+      });
+
+    }
+    );
+  }, []);
+
+  const totalSolved =leetcodeStats.all.solved;
+  const totalQuestions = leetcodeStats.all.total;
   // const progressPercentage = totalQuestions > 0 ? (totalSolved / totalQuestions) * 100 : 0;
+ 
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -133,65 +162,66 @@ const Profile = () => {
       </div>
       <div className="text-lg flex flex-col lg:flex-row text-white items-center justify-center lg:min-h-screen w-full p-6 pt-10 max-lg:pt-20  overflow-auto max-h-screen ">
         {/* Profile Section */}
-        <div className=" max-lg:top-96 relative flex max-lg:flex-col max-lg:py-44 justify-center items-center" style={{ fontFamily: "Inter, sans-serif" }}>
-          <div className="profile shadow-lg glassmorphism transition duration-500 ease-in-out transform lg:min:h-[80vh] lg:w-[25vw] max-lg:w-[86vw] flex flex-col gap-5 items-center justify-center m-4 p-6 pb-8 bg-[#1a1a40]/60 border border-[#6f00ff]/50">
-            <img className="h-16" src={ Avinya } alt="Profile" />
-            {isEditing ? (
-              <div>
-                <label className="uppercase text-[#f8f5ff] tracking-wider">Name :</label>
-                <input className="  text-white glassmorphism p-2 rounded" name="name" value={profile.name} onChange={handleChange} />
+          <div className=" max-lg:top-96 relative flex max-lg:flex-col max-lg:py-44 justify-center items-center">
+            <div className="profile shadow-lg glassmorphism transition duration-500 ease-in-out transform lg:min:h-[80vh] lg:w-[25vw] max-lg:w-[86vw] flex flex-col gap-5 items-center justify-center m-4 p-6 pb-8 bg-[#1a1a40]/60 border border-[#6f00ff]/50">
+              <img className="h-24 w-24 rounded-full" src={profilePicUrl} alt="profile" />
+              {isEditing ? (
+                <div>
+            <label className=" sora uppercase text-[#f8f5ff] tracking-wider">Name :</label>
+            <input className="  text-white glassmorphism p-2 rounded" name="name" value={profile.name} onChange={handleChange} />
+                </div>
+              ) : (
+                <div className="text-2xl sora uppercase text-[#f8f5ff] tracking-wider">{profile.name}</div>
+              )}
+              {isEditing ? (
+                <div>
+            <label className=" sora uppercase text-[#f8f5ff] tracking-wider">Email :</label>
+            <input className="  text-white glassmorphism p-2 rounded" name="email" value={profile.email} onChange={handleChange} />
+                </div>
+              ) : (
+                <div className="inter">{profile.email}</div>
+              )}
+              <hr className="w-[85%] " />
+              <div className="flex flex-col justify-center items-center gap-6">
+                {['linkedin', 'leetcode', 'github'].map((field) => (
+            <p key={field} className="flex gap-4 justify-center items-center">
+              <img className="h-8" src={`${field}.png`} alt={field} />
+              {isEditing ? (
+                <input className="  text-white glassmorphism p-2 rounded" name={field} value={profile[field]} onChange={handleChange} />
+              ) : (
+                <a href={profile[field]} className="hover:text-white transition inter hover:scale-105">{field.charAt(0).toUpperCase() + field.slice(1)}</a>
+              )}
+            </p>
+                ))}
               </div>
-            ) : (
-              <div className="text-2xl uppercase text-[#f8f5ff] tracking-wider">{profile.name}</div>
-            )}
-            {isEditing ? (
-              <div>
-                <label className="uppercase text-[#f8f5ff] tracking-wider">Email :</label>
-                <input className="  text-white glassmorphism p-2 rounded" name="email" value={profile.email} onChange={handleChange} />
-              </div>
-            ) : (
-              <div className="inter" style={{ fontFamily: "Inter, sans-serif" }}>{profile.email}</div>
-            )}
-            <hr className="w-[85%] " />
-            <div className="flex flex-col justify-center items-center gap-6">
-              {['linkedin', 'leetcode', 'github'].map((field) => (
-                <p key={field} className="flex gap-4 justify-center items-center">
-                  <img className="h-8" src={`${field}.png`} alt={field} />
-                  {isEditing ? (
-                    <input className="  text-white glassmorphism p-2 rounded" name={field} value={profile[field]} onChange={handleChange} />
-                  ) : (
-                    <a href={profile[field]} className="hover:text-white transition inter hover:scale-105">{field.charAt(0).toUpperCase() + field.slice(1)}</a>
-                  )}
-                </p>
-              ))}
+              <hr className="w-[85%] " />
+              <div className="text-xl sora font-bold">About</div>
+              {isEditing ? (
+                <textarea className=" text-white glassmorphism p-2 rounded w-full" name="about" value={profile.about} onChange={handleChange} />
+              ) : (
+                <p className="p-1 font-thin h-[7rem] inter text-center overflow-hidden text-gray-300">{profile.about}</p>
+              )}
+              <button onClick={handleEditClick} className="bg-[#4b19675b] font-semibold py-2 px-4 rounded-lg transition duration-300 ease-in-out hover:text-white focus:outline-none border hover:scale-105">
+                {isEditing ? 'Save' : 'Edit'}
+              </button>
             </div>
-            <hr className="w-[85%] " />
-            <div className="text-xl sora font-bold">About</div>
-            {isEditing ? (
-              <textarea className=" text-white glassmorphism p-2 rounded w-full" name="about" value={profile.about} onChange={handleChange} />
-            ) : (
-              <p className="p-1 font-thin h-[7rem] inter text-center overflow-hidden text-gray-300">{profile.about}</p>
-            )}
-            <button onClick={handleEditClick} className="bg-[#4b19675b] font-semibold py-2 px-4 rounded-lg transition duration-300 ease-in-out hover:text-white focus:outline-none border hover:scale-105">
-              {isEditing ? 'Save' : 'Edit'}
-            </button>
-          </div>
-          {/* Stats and Leetcode Section */}
+            {/* Stats and Leetcode Section */}
           <div className="flex flex-col justify-center gap-6 items-center w-full lg:w-[70vw] font-orbitron">
             <div className="flex flex-col lg:flex-row max-lg:gap-6 justify-center items-center w-full">
               {/* LeetCode Stats Section */}
               <div className="stats shadow-lg glassmorphism transition duration-300 ease-in-out transform flex flex-col gap-6 justify-center items-center h-[40vh] lg:w-[35vw] p-6 max-lg:w-[86vw] bg-[#1a1a40]/60 border border-[#6f00ff]/50">
                 <div className="text-2xl font-bold">LeetCode Stats</div>
                 <div className="data flex justify-center w-full items-center">
-                  <div className="flex justify-center m-4 items-center h-auto progresBar">
-                    <ProgressBar percentage={50} />
+                  <div className="flex flex-col justify-center m-4 items-center h-auto progresBar">
+                    <ProgressBar percentage={totalSolved} />
+                    <div>Solved</div>
                   </div>
-                  {/* <div className="stats w-40">
+                  <div className="stats w-40">
                     <ul className="flex flex-col justify-center items-center gap-3 text-lg">
-                      {['Easy', 'Medium', 'Hard'].map((level) => (
+                      {['easy', 'medium', 'hard'].map((level) => (
                         <div key={level} className="flex flex-col items-center">
-                          <li className={`font-bold ${level === 'Easy' ? 'text-[#80aee3]' : level === 'Medium' ? 'text-[#d4db46]' : 'text-red-500'}`}>
-                            {level}
+                          <li className={`font-bold ${level === 'easy' ? 'text-[#80aee3]' : level === 'medium' ? 'text-[#d4db46]' : 'text-red-500'}`}>
+                            {level.toUpperCase()}
                           </li>
                           <li className="text-white">
                             {leetcodeStats[level].solved}/{leetcodeStats[level].total}
@@ -199,7 +229,7 @@ const Profile = () => {
                         </div>
                       ))}
                     </ul>
-                  </div> */}
+                  </div>
                 </div>
               </div>
               <div className="flex flex-col lg:flex-row gap-6 justify-center ">

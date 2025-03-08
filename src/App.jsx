@@ -16,7 +16,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/events" element={<Events />} />
         <Route path="/members" element={<MemberManagement />} />
-        <Route path="/teammanage" element={<TeamMem />} />
+        <Route path="/team" element={<TeamMem />} />
         <Route path="/profile" element={<Profile />}/>
       </Routes>  
     </Router>
