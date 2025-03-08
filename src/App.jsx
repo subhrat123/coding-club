@@ -1,22 +1,12 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-import Navbar from './Components/Navbar'
-import Footer from './Components/Footer';
-import PricingSection from './Components/PricingSection';
-import FAQs from './Components/FAQs';
-import Login from './Components/Login';
-
-function LandingPage() {
-  return (
-    <>
-    <Navbar />
-    <PricingSection />
-    <FAQs />
-    <Footer />
-    </>
-  )
-}
+import Login from './Pages/Login';
+import LandingPage from './Pages/LandingPage';
+import Events from './Pages/Events';
+import MemberManagement from './Pages/MemberManagement';
+import TeamMem from './Pages/TeamMem';
+import Profile from './Pages/Profile';
 
 function App() {
   return (
@@ -24,6 +14,10 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/members" element={<MemberManagement />} />
+        <Route path="/teammanage" element={<TeamMem />} />
+        <Route path="/profile" element={<Profile />}/>
       </Routes>  
     </Router>
   )

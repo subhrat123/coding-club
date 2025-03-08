@@ -59,21 +59,20 @@ export default function Pricing() {
   };
 
   return (
-    <div className="min-h-screen bg-[#040313] text-white py-20 px-4" style={{ fontFamily: "Sora, sans-serif" }}>
+    <div className="min-h-screen mt-[100px] mb-[100px] bg-[#040313] text-white py-20 px-4" style={{ fontFamily: "Sora, sans-serif" }}>
       <div className="max-w-6xl mx-auto space-y-12">
         <h1 className="text-4xl font-bold text-center">Our Pricing Plans</h1>
         <div className="relative flex justify-center">
           <div className="grid md:grid-cols-3 gap-6">
-            {plans.map((plan, index) => (
+            {plans.map((plan) => (
               <div
                 key={plan.name}
                 className={`relative p-6 bg-[#141327] h-[450px] rounded-lg border border-zinc-800 transition-all duration-300 ease-in-out
-                ${showPaymentModal ? "opacity-30 scale-95 pointer-events-none" : "opacity-100 hover:scale-105 hover:shadow-lg"}
-                ${index === 0 ? "mt-10" : index === 2 ? "-mt-10" : ""}`}
+                ${showPaymentModal ? "opacity-30 scale-95 pointer-events-none" : "opacity-100 hover:scale-105 hover:shadow-lg"}`}
               >
                 {plan.featured && (
                   <div className="absolute -top-2 right-4 bg-white  text-black px-3 py-1 rounded-full text-sm font-medium">
-                    Featured
+                    Popular
                   </div>
                 )}
                 <h3 className="text-lg font-medium text-white">{plan.name}</h3>
@@ -82,7 +81,7 @@ export default function Pricing() {
                   <span className="ml-1 text-sm font-medium text-zinc-400">{plan.period}</span>
                 </div>
                 <button
-                  className="w-full bg-blue-600 hover:bg-blue-700 mt-4 mb-4 p-2 rounded-lg"
+                  className="w-full bg-purple-600 hover:bg-purple-700 mt-4 mb-4 p-2 rounded-lg"
                   onClick={() => {
                     setSelectedPlan(plan);
                     setShowPaymentModal(true);
@@ -123,7 +122,7 @@ export default function Pricing() {
                 <label
                   key={method.id}
                   className={`flex items-center justify-between p-3 border rounded-lg cursor-pointer transition ${
-                    selectedMethod === method.id ? "border-blue-600 bg-blue-600/10" : "border-zinc-800 hover:border-zinc-700"
+                    selectedMethod === method.id ? "border-purple-600 bg-purple-600/10" : "border-zinc-800 hover:border-zinc-700"
                   }`}
                 >
                   <div className="flex items-center gap-4">
@@ -147,7 +146,7 @@ export default function Pricing() {
             <button
               onClick={handlePayment}
               disabled={isLoading}
-              className="w-full mt-4 p-3 bg-blue-600 hover:bg-blue-700 rounded-lg"
+              className="w-full mt-4 p-3 bg-purple-600 hover:bg-purple-700 rounded-lg"
             >
               {isLoading ? "Processing..." : "Continue to payment"}
             </button>

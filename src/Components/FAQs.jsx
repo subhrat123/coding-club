@@ -43,7 +43,7 @@ export default function FAQAccordion() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-6" style={{ fontFamily: "Inter, sans-serif" }}>
+    <div className="mt-[200px] max-w-6xl mx-auto p-6" style={{ fontFamily: "Inter, sans-serif" }}>
       <h2 className="text-center text-3xl font-bold text-white mb-8">Maybe We Have An Answer</h2>
       <div className="space-y-2">
         {faqs.map((faq, index) => (
