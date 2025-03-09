@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import ProgressBar from '../components/progress-bar.jsx';
+import ProgressBar from '../Components/ProgressBar.jsx';
 import { getUser } from '../api/userApi';
 
 const generateDots = (count) => {
