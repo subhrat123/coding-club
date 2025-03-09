@@ -11,18 +11,18 @@ function Footer() {
           {/* <!-- Left Section (CTA) --> */}
           <div className="max-w-lg">
             <h2
-              className="text-5xl font-extrabold leading-tight"
+              className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight"
               style={{ fontFamily: "Sora, sans-serif" }}
             >
               Join The Community
             </h2>
-            <p className="mt-10 text-gray-400 text-sm">
+            <p className="mt-6 md:mt-8 lg:mt-10 text-gray-400 text-sm">
               With Coding Club RSCOE, you can touch bounds you never even imagined of and learn what you never thought you could. Join us now and be a part of one of the most amazing communities in the world.     
             </p>
           </div>
 
-          {/* /* <!-- Right Section (Social Links) --> */}
-          <div className="mt-[60px] wmd:mt-0">
+          {/* <!-- Right Section (Social Links) --> */}
+          <div className="mt-10 md:mt-0">
             <ul className="space-y-3 text-white opacity-90 text-xs" style={{ fontFamily: "Inter, sans-serif" }}>
               <li className="flex items-center justify-between border-b border-gray-700 pb-4">
                 <span className="flex items-center">
@@ -36,7 +36,7 @@ function Footer() {
                 <span className="flex items-center">
                   <i className="fa-brands fa-instagram mr-2"></i> INSTAGRAM
                 </span>
-                <a href="#" className="text-gray-400 hover:text-white ml-52">
+                <a href="#" className="text-gray-400 hover:text-white ml-4">
                   ↗
                 </a>
               </li>
@@ -53,7 +53,7 @@ function Footer() {
         </div>
 
         {/* <!-- Navigation Links --> */}
-        <div className="max-w-6xl pt-[60px] mx-auto mt-10">
+        <div className="max-w-6xl pt-10 mx-auto mt-10">
           <ul
             className="mt-4 space-y-3 text-[10px] text-white tracking-widest"
             style={{ fontFamily: "Inter, sans-serif" }}

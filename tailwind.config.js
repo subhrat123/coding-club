@@ -1,7 +1,11 @@
-export const content = [
-  "./src/**/*.{js,jsx,ts,tsx}",
-];
-export const theme = {
-  extend: {},
+module.exports = {
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "node_modules/flowbite-react/**/*.js",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
 };
 export const plugins = [];

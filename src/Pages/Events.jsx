@@ -1,66 +1,110 @@
 import React from "react";
 
+import codingo from "../Images/codingo.png";
+import web_dev from "../Images/web_dev.avif";
+import Uipath from "../Images/Uipath.png";
+import ethical_hack from "../Images/ethical_hack.jpg";
+import avinya from "../Images/avinya.png";
+import java24 from "../Images/java24.jpg";
+import crossroads from "../Images/crossroads.jpg";
+import cybersec from "../Images/cybersec.jpg";
+import ux from "../Images/ux.png";
+import cloud from "../Images/cloud.png";
+import git from "../Images/git.png";
+import java25 from "../Images/java24.jpg";
+
 const eventData = [
   {
-    title: "Tech Conference 2025",
-    date: "March 15, 2025",
-    description: "An exciting conference on the latest technology trends.",
-    Imgsrc: "/th (1).jpg",
+    title: "Codingo 3.0",
+    date: "October 25, 2023",
+    description:
+      "Test your coding skills in a thrilling competitive programming challenge!",
+    Imgsrc: codingo,
   },
   {
-    title: "AI Workshop",
-    date: "April 5, 2025",
-    description: "Hands-on workshop on artificial intelligence and machine learning.",
-    Imgsrc: "/back.avif",
+    title: "Event 2: Web Development Session",
+    date: "November 15, 2023",
+    description:
+      "Learn to build modern, responsive websites with the latest web technologies.",
+    Imgsrc: web_dev,
+  },
+
+  {
+    title: "UI Path",
+    date: "February 7, 2024",
+    description:
+      "Automate tasks efficiently with UI Path and revolutionize your workflow.",
+    Imgsrc: Uipath,
   },
   {
-    title: "Web Dev Bootcamp",
-    date: "May 10, 2025",
-    description: "A beginner-friendly bootcamp covering modern web development.",
-    Imgsrc: "/th (1).jpg",
+    title: "Ethical Hacking Workshop",
+    date: "February 9, 2024",
+    description:
+      "Dive into cybersecurity fundamentals and learn ethical hacking techniques.",
+    Imgsrc: ethical_hack,
   },
   {
-    title: "Cybersecurity Summit",
-    date: "June 20, 2025",
-    description: "A deep dive into cybersecurity and ethical hacking.",
-    Imgsrc: "/back.avif",
+    title: "AVINYA 2.0",
+    date: "March 20, 2024",
+    description:
+      "A showcase of innovation, creativity, and groundbreaking tech solutions.",
+    Imgsrc: avinya,
   },
   {
-    title: "Blockchain Meetup",
-    date: "July 15, 2025",
-    description: "Exploring blockchain technology and its applications.",
-    Imgsrc: "/vite.svg",
+    title: "Java Bootcamp '24",
+    date: "April 19, 2024",
+    description:
+      "Master Java fundamentals and advanced concepts in this hands-on bootcamp.",
+    Imgsrc: java24,
   },
   {
-    title: "Data Science Hackathon",
-    date: "August 30, 2025",
-    description: "A competitive hackathon focused on data science challenges.",
-    Imgsrc: "/back.avif",
+    title: "The Crossroads",
+    date: "August 8, 2024",
+    description:
+      "Where technology, business, and creativity intersect—insights from experts.",
+    Imgsrc: crossroads,
   },
   {
-    title: "Robotics Expo",
-    date: "September 25, 2025",
-    description: "Showcasing innovative robotics projects and advancements.",
-    Imgsrc: "/back.avif",
+    title: "Roadmap to Cyber Security",
+    date: "August 10, 2024",
+    description: "Step-by-step guidance on building a career in cybersecurity.",
+    Imgsrc: cybersec,
   },
   {
-    title: "Game Development Jam",
-    date: "October 10, 2025",
-    description: "A fun and creative game development event for all levels.",
-    Imgsrc: "/th (1).jpg",
+    title: "UI/UX",
+    date: "August 23, 2024",
+    description: "Discover the principles of great design and user experience.",
+    Imgsrc: ux,
   },
   {
-    title: "Cloud Computing Seminar",
-    date: "November 5, 2025",
-    description: "Learning about cloud computing and its real-world use cases.",
-    Imgsrc: "/th (1).jpg",
+    title: "Cloud Session",
+    date: "September 1, 2024",
+    description: "A deep dive into cloud computing and deployment strategies.",
+    Imgsrc: cloud,
+  },
+  {
+    title: "Git and GitHub",
+    date: "October 1, 2024",
+    description: "Learn version control with Git and collaborate using GitHub.",
+    Imgsrc: git,
+  },
+  {
+    title: "Java Bootcamp '25",
+    date: "January 16, 2025",
+    description:
+      "Advance your Java skills with expert-led sessions and projects.",
+    Imgsrc: java24,
   },
 ];
-
+eventData.reverse();
 const EventCard = ({ title, date, description, Imgsrc }) => {
   return (
     <div className="bg-black bg-opacity-50 p-4 rounded-xl shadow-lg hover:scale-105 transition-transform cursor-pointer">
-      <img src={Imgsrc} alt={title} className="w-full h-40 object-cover rounded-lg" />
+      <img
+        src={Imgsrc}
+        alt={title}
+        className="w-full h-40 object-cover rounded-lg"
+      />
       <h3 className="mt-3 text-lg font-semibold text-white">{title}</h3>
       <p className="text-sm text-gray-300">{date}</p>
       <p className="text-sm text-gray-200 mt-1">{description}</p>
@@ -72,7 +116,9 @@ const Events = () => {
   return (
     <div className="mt-24 bg-[#040313] min-h-screen">
       <div className="bg-[#040313] bg-opacity-70 py-10">
-        <h1 className="text-center text-3xl font-bold text-white mb-6">Upcoming Events</h1>
+        <h1 className="text-center text-3xl font-bold text-white mb-6">
+          Our Events
+        </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-6">
           {eventData.map((event, index) => (
             <EventCard key={index} {...event} />

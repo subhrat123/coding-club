@@ -14,7 +14,7 @@ const Home = () => {
         </div>
 
         {/* Content Wrapper */}
-        <div className="flex max-lg:flex-col lg:flex-row lg:w-[60vw] max-lg:w-[80vw] pt-2 pb-10 max-lg:p-7 glassmorphism gap-8 items-center justify-between">
+        <div className="flex max-lg:flex-col lg:flex-row lg:w-[60vw] max-lg:w-[80vw] pt-2 pb-10 max-lg:p-7 gap-8 items-center justify-between">
           
         <div className="flex flex-col lg:flex-row items-start lg:items-center gap-6">
   {/* Text Section */}
@@ -31,9 +31,9 @@ const Home = () => {
   </div>
 
   {/* Image Section */}
-  <div className="relative w-[800px] flex justify-end lg:ml-12">
+  <div className="relative w-full lg:w-[50%] flex justify-end lg:ml-12">
     <img
-      className="w-full lg:h-[300px] max-lg:h-[200px] object-cover rounded-lg shadow-lg"
+      className="w-full h-auto object-cover rounded-lg shadow-lg"
       src={discord}
       alt="Community"
     />

@@ -4,7 +4,6 @@ import PayPalLogo from "../SVGs/paypal-svgrepo-com.svg";
 import GPayLogo from "../SVGs/google-pay-icon-svgrepo-com.svg";
 import UpiLogo from "../SVGs/qr-code-svgrepo-com.svg";
 
-
 export default function Pricing() {
   const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState(null);
@@ -15,7 +14,12 @@ export default function Pricing() {
     {
       name: "Basic",
       price: 0,
-      features: ["Access to Core Course Materials", "Community Support", "Monthly Webinars", "Email Support"],
+      features: [
+        "Access to Core Course Materials",
+        "Community Support",
+        "Monthly Webinars",
+        "Email Support",
+      ],
     },
     {
       name: "Plus",
@@ -45,9 +49,24 @@ export default function Pricing() {
   ];
 
   const paymentMethods = [
-    { id: "paypal", name: "PayPal", logo: PayPalLogo, description: "Pay with your PayPal account" },
-    { id: "stripe", name: "GPay", logo: GPayLogo, description: "Pay with your GPay account" },
-    { id: "mollie", name: "UPI", logo: UpiLogo, description: "Pay with any other UPI Apps" },
+    {
+      id: "paypal",
+      name: "PayPal",
+      logo: PayPalLogo,
+      description: "Pay with your PayPal account",
+    },
+    {
+      id: "stripe",
+      name: "GPay",
+      logo: GPayLogo,
+      description: "Pay with your GPay account",
+    },
+    {
+      id: "mollie",
+      name: "UPI",
+      logo: UpiLogo,
+      description: "Pay with any other UPI Apps",
+    },
   ];
 
   const handlePayment = async () => {
@@ -59,7 +78,10 @@ export default function Pricing() {
   };
 
   return (
-    <div className="min-h-screen mt-[100px] mb-[100px] bg-[#040313] text-white py-20 px-4" style={{ fontFamily: "Sora, sans-serif" }}>
+    <div
+      className="min-h-screen mt-[100px] mb-[100px] bg-[#040313] text-white py-20 px-4"
+      style={{ fontFamily: "Sora, sans-serif" }}
+    >
       <div className="max-w-6xl mx-auto space-y-12">
         <h1 className="text-4xl font-bold text-center">Our Pricing Plans</h1>
         <div className="relative flex justify-center">
@@ -68,7 +90,11 @@ export default function Pricing() {
               <div
                 key={plan.name}
                 className={`relative p-6 bg-[#141327] h-[450px] rounded-lg border border-zinc-800 transition-all duration-300 ease-in-out
-                ${showPaymentModal ? "opacity-30 scale-95 pointer-events-none" : "opacity-100 hover:scale-105 hover:shadow-lg"}`}
+                ${
+                  showPaymentModal
+                    ? "opacity-30 scale-95 pointer-events-none"
+                    : "opacity-100 hover:scale-105 hover:shadow-lg"
+                }`}
               >
                 {plan.featured && (
                   <div className="absolute -top-2 right-4 bg-white  text-black px-3 py-1 rounded-full text-sm font-medium">
@@ -77,8 +103,12 @@ export default function Pricing() {
                 )}
                 <h3 className="text-lg font-medium text-white">{plan.name}</h3>
                 <div className="mt-4 flex items-baseline">
-                  <span className="text-5xl font-bold tracking-tight mb-4 text-white">₹{plan.price}</span>
-                  <span className="ml-1 text-sm font-medium text-zinc-400">{plan.period}</span>
+                  <span className="text-5xl font-bold tracking-tight mb-4 text-white">
+                    ₹{plan.price}
+                  </span>
+                  <span className="ml-1 text-sm font-medium text-zinc-400">
+                    {plan.period}
+                  </span>
                 </div>
                 <button
                   className="w-full bg-purple-600 hover:bg-purple-700 mt-4 mb-4 p-2 rounded-lg"
@@ -91,7 +121,10 @@ export default function Pricing() {
                 </button>
                 <ul className="space-y-3 mt-4">
                   {plan.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center gap-2 text-sm text-zinc-300">
+                    <li
+                      key={idx}
+                      className="flex items-center gap-2 text-sm text-zinc-300"
+                    >
                       <Check className="h-4 w-4 text-zinc-400" />
                       {feature}
                     </li>
@@ -113,7 +146,10 @@ export default function Pricing() {
               <div className="text-right">
                 <div className="text-sm font-medium">{selectedPlan.name}</div>
                 <div className="text-2xl font-bold">
-                  ₹{selectedPlan.price} <span className="text-sm text-zinc-400">/{selectedPlan.period}</span>
+                  ₹{selectedPlan.price}{" "}
+                  <span className="text-sm text-zinc-400">
+                    /{selectedPlan.period}
+                  </span>
                 </div>
               </div>
             </div>
@@ -122,7 +158,9 @@ export default function Pricing() {
                 <label
                   key={method.id}
                   className={`flex items-center justify-between p-3 border rounded-lg cursor-pointer transition ${
-                    selectedMethod === method.id ? "border-purple-600 bg-purple-600/10" : "border-zinc-800 hover:border-zinc-700"
+                    selectedMethod === method.id
+                      ? "border-purple-600 bg-purple-600/10"
+                      : "border-zinc-800 hover:border-zinc-700"
                   }`}
                 >
                   <div className="flex items-center gap-4">
@@ -136,10 +174,16 @@ export default function Pricing() {
                     />
                     <div>
                       <div className="font-medium">{method.name}</div>
-                      <div className="text-sm text-zinc-400">{method.description}</div>
+                      <div className="text-sm text-zinc-400">
+                        {method.description}
+                      </div>
                     </div>
                   </div>
-                  <img src={method.logo} alt={method.name} className="h-8 w-20 object-contain" />
+                  <img
+                    src={method.logo}
+                    alt={method.name}
+                    className="h-8 w-20 object-contain"
+                  />
                 </label>
               ))}
             </div>
