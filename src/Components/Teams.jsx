@@ -37,9 +37,9 @@ const testimonials = [
 const Teams = () => {
   return (
     <div>
-      <div className="flex flex-col justify-center bg-[#040015] items-center h-[60vh] m-auto mt-40 mb-60 w-[80%] p-6">
+      <div className="flex flex-col justify-center bg-[#040015] items-center h-[40vh] m-auto mt-40 mb-60 w-[80%] p-6">
         <div className="text-4xl text-white font-bold mb-10 ">{"OUR TEAMS"}</div>
-        <div className="w-full flex justify-center bg-[#141327] items-center h-[400px] max-w-4xl mx-auto">
+        <div className="w-full flex justify-center bg-[#141327] items-center h-[80vh] max-w-4xl mx-auto">
           <Swiper
             modules={[Navigation, Pagination]}
             navigation
@@ -56,7 +56,7 @@ const Teams = () => {
               >
                 <div className="flex flex-col  w-[50] p-6 justify-center items-center">
                   <div className="text-xl font-bold">{item.title}</div>
-                  <div className="flex max-lg:flex-col text-center items-center gap-4 justify-center w-[70%]">
+                  <div className="flex max-lg:flex-col text-center items-center gap-4 justify-center md:w-[70%]">
                     <p className="text-gray-300 mt-2">{item.text}</p>
                     <img
                       src={item.image}
