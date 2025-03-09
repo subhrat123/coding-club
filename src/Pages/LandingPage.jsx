@@ -1,4 +1,3 @@
-import React from 'react';
 
 import LandingSection from '../Components/LandingSection';
 import AboutPage from '../Components/AboutPage';

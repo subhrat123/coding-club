@@ -24,11 +24,11 @@ export default function AuthPage() {
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log(email, password);
       const response = await loginUser({ email, password });
-
       localStorage.setItem("token", response.data.token);
+
       alert("Login successful!");
+      window.location.href = "/profile";
     } catch (error) {
       console.error("Login error:", error.response?.data || error.message);
       alert(error.response?.data?.message || "Error logging in!");

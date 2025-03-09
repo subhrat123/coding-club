@@ -1,6 +1,6 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useEffect, useRef } from "react";
-import React from "react";
-
+import bgvideo from '../Videos/reflectbg.mp4'
 function LandingSection() {
   const videoRef = useRef(null);
 
@@ -15,7 +15,7 @@ function LandingSection() {
       <video
         ref={videoRef}
         className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
-        src="src\Videos\reflect bg.mp4"
+        src={bgvideo}
         type="video/mp4"
         autoPlay
         loop

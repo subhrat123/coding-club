@@ -1,6 +1,6 @@
 // filepath: c:\Users\ypadw\Desktop\CC\Web\Website\CC Wwbsite Updated\CC Website\src\Components\Navbar.jsx
 import { Link as ScrollLink } from "react-scroll";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 
