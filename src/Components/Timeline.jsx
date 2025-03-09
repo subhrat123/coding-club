@@ -62,7 +62,7 @@ function Timeline() {
     <div
       style={{
         backgroundColor: "#040313",
-        height: "80vh",
+        height: "40vh",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
