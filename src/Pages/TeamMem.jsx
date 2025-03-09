@@ -1,5 +1,5 @@
 import { FaLinkedin, FaTwitter, FaGithub } from "react-icons/fa";
-import Starfield from "../components/StarField";
+import Starfield from "../Components/StarField.jsx";
 
 const teams = [
   {
