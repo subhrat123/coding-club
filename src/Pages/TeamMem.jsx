@@ -130,7 +130,7 @@ const TeamMem = () => {
    </div>
     <div className="min-h-screen text-white py-16">
       <div className="text-center mb-10">
-        <h1 className="text-4xl font-bold text-[#c084fc]">Meet Our Team</h1>
+        <h1 className="text-4xl font-bold text-[#ffffff]">Meet Our Team</h1>
         <p className="text-gray-300 mt-2">The passionate minds behind our success.</p>
       </div>
 
@@ -144,11 +144,11 @@ const TeamMem = () => {
                   key={i}
                   className="relative glassmorphism backdrop-blur-lg rounded-lg p-6 text-center shadow-lg hover:scale-105 transition duration-300 border border-white/20"
                 >
-                  <div className="absolute -top-5 left-1/2 transform -translate-x-1/2">
+                  <div className="absolute -top-5 left-1/2  rounded-full transform -translate-x-1/2">
                     <img
                       src={member.image}
                       alt={member.name}
-                      className="w-28 h-28 rounded-full object-cover border-4 border-[#6f00ff] shadow-md"
+                      className="w-28 h-28 rounded-full object-cover border-2 border-[#8e59d3] shadow-md"
                     />
                   </div>
                   <div className="mt-24">

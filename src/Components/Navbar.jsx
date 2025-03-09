@@ -16,7 +16,7 @@ function Navbar() {
           <a href="#" className="hover:text-gray-300">Home</a>
           <a href="#" className="hover:text-gray-300">Pricing</a>
           <a href="#" className="hover:text-gray-300">About Us</a>
-          <a href="#" className="hover:text-gray-300">Team</a>
+          <a href="/team" className="hover:text-gray-300">Team</a>
         </div>
       </div>
 
