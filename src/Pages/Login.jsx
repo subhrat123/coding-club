@@ -1,9 +1,49 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import home from "../Images/home.gif";
+import { registerUser, loginUser } from "../api/authApi";
 
 export default function AuthPage() {
   const [isLogin, setIsLogin] = useState(false);
+  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleRegisterSubmit = async (e) => {
+    e.preventDefault();
+    const response = await registerUser({
+      username,
+      name,
+      email,
+      password,
+    });
+    if (response.status === 201) {
+      alert("User created successfully!");
+    } else {
+      alert(response.data.message)
+      alert("Error creating user!");
+    }
+  };
+
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+    // Handle login logic here
+    const response = loginUser({
+      email,
+      password,
+    })
+    console.log(response);
+    if (response.status === 200) {
+      localStorage.setItem("token", response.data.token);
+      // localStorage.setItem("username", response.data.user.username);
+
+      alert("Login successful!");
+    } else {
+      // alert(response.data.message)
+      alert("Error logging in!");
+    }
+  };
 
   return (
     <div
@@ -29,30 +69,39 @@ export default function AuthPage() {
               <h2 className="text-white text-2xl mb-4 font-semibold">
                 Sign Up
               </h2>
-              <input
-                type="text"
-                placeholder="Name"
-                className="w-full p-2 mb-2 rounded bg-gray-700 text-white outline-none"
-              />
-              <input
-                type="email"
-                placeholder="Email"
-                className="w-full p-2 mb-2 rounded bg-gray-700 text-white outline-none"
-              />
-              <input
-                type="password"
-                placeholder="Password"
-                className="w-full p-2 mb-2 rounded bg-gray-700 text-white outline-none"
-              />
-              <input
-                type="password"
-                placeholder="Re-enter Password"
-                className="w-full p-2 mb-4 rounded bg-gray-700 text-white outline-none"
-              />
-              
-              <button className="w-full p-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
-                Sign Up
-              </button>
+              <form onSubmit={handleRegisterSubmit}>
+                <input
+                  type="text"
+                  placeholder="Username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  className="w-full p-2 mb-2 rounded bg-gray-700 text-white outline-none"
+                />
+                <input
+                  type="text"
+                  placeholder="Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="w-full p-2 mb-2 rounded bg-gray-700 text-white outline-none"
+                />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full p-2 mb-2 rounded bg-gray-700 text-white outline-none"
+                />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full p-2 mb-4 rounded bg-gray-700 text-white outline-none"
+                />
+                <button className="w-full p-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
+                  Sign Up
+                </button>
+              </form>
               <p
                 className="text-gray-400 mt-4 cursor-pointer hover:text-gray-300"
                 onClick={() => setIsLogin(true)}
@@ -84,7 +133,7 @@ export default function AuthPage() {
             >
             <div className="grid grid-flow-col items-center justify-between h-full w-full">
             {/* Login Image */}
-            <div className=" absoulute w-[450px] flex items-center justify-center h-full">
+            <div className="absoulute w-[450px] flex items-center justify-center h-full">
               <div className="relative right-[87px] bg-purple-600 items-center justify-center h-full rounded-lg shadow-lg flex flex-col w-[370px]">
                 <img
                   src={home}
@@ -96,26 +145,28 @@ export default function AuthPage() {
             {/* Login Form */}
             <div className="w-[280px] relative right-[65px] flex flex-col items-center outline-none">
               <h2 className="text-white text-2xl mb-4 font-semibold">Login</h2>
-              <input
-                type="email"
-                placeholder="Email"
-                className="w-full p-2 mb-2 rounded bg-gray-700 text-white outline-none"
-              />
-              <input
-                type="password"
-                placeholder="Password"
-                className="w-full p-2 mb-4 rounded bg-gray-700 text-white outline-none"
-              />
-              <button className="w-full p-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition">
-                Login
-              </button>
-              <p
-                className="text-gray-400 mt-4 cursor-pointer hover:text-gray-300"
-                onClick={() => setIsLogin(false)}
-              >
-                Don't have an account?{" "}
-                <span className="text-purple-400">Sign Up</span>
-              </p>
+              <form>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  className="w-full p-2 mb-2 rounded bg-gray-700 text-white outline-none"
+                />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  className="w-full p-2 mb-4 rounded bg-gray-700 text-white outline-none"
+                />
+                <button className="w-full p-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition" onClick={handleLoginSubmit}>
+                  Login
+                </button>
+                <p
+                  className="text-gray-400 mt-4 cursor-pointer hover:text-gray-300"
+                  onClick={() => setIsLogin(false)}
+                >
+                  Don&apos;t have an account?{" "}
+                  <span className="text-purple-400">Sign Up</span>
+                </p>
+              </form>
             </div>
             </div>
           </div>
@@ -125,3 +176,4 @@ export default function AuthPage() {
     </div>
   );
 }
+

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Table } from "flowbite-react";
 
 const AdminMembers = () => {
   const [search, setSearch] = useState("");
@@ -50,31 +49,34 @@ const AdminMembers = () => {
       </div>
 
       <div className="bg-white p-4 rounded-lg shadow-md">
-        <Table>
-          <Table.Head>
-            <Table.HeadCell>Name</Table.HeadCell>
-            <Table.HeadCell>Email</Table.HeadCell>
-            <Table.HeadCell>Team</Table.HeadCell>
-            <Table.HeadCell>Role</Table.HeadCell>
-            <Table.HeadCell>Action</Table.HeadCell>
-          </Table.Head>
-          <Table.Body>
+        <table className="table-auto w-full">
+          <thead className="bg-gray-50">
+            <tr>
+              <th className="px-4 py-2 text-left">Name</th>
+              <th className="px-4 py-2 text-left">Email</th>
+              <th className="px-4 py-2 text-left">Team</th>
+              <th className="px-4 py-2 text-left">Role</th>
+              <th className="px-4 py-2 text-left">Action</th>
+            </tr>
+          </thead>
+          <tbody>
             {filteredUsers.map((user, index) => (
-              <Table.Row key={index}>
-                <Table.Cell>{user.name}</Table.Cell>
-                <Table.Cell>{user.email}</Table.Cell>
-                <Table.Cell>{user.team}</Table.Cell>
-                <Table.Cell>{user.role}</Table.Cell>
-                <Table.Cell>
+              <tr key={index} className="border-b-2 border-gray-200">
+                <td className="px-4 py-2">{user.name}</td>
+                <td className="px-4 py-2">{user.email}</td>
+                <td className="px-4 py-2">{user.team}</td>
+                <td className="px-4 py-2">{user.role}</td>
+                <td className="px-4 py-2">
                   <button className="bg-gray-200 text-black px-3 py-1 rounded">Edit</button>
-                </Table.Cell>
-              </Table.Row>
+                </td>
+              </tr>
             ))}
-          </Table.Body>
-        </Table>
+          </tbody>
+        </table>
       </div>
     </div>
   );
 };
 
 export default AdminMembers;
+
