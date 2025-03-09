@@ -31,9 +31,9 @@ const Home = () => {
   </div>
 
   {/* Image Section */}
-  <div className="relative w-[800px] flex justify-end lg:ml-12">
+  <div className="relative w-full lg:w-[50%] flex justify-end lg:ml-12">
     <img
-      className="w-full lg:h-[300px] max-lg:h-[200px] object-cover rounded-lg shadow-lg"
+      className="w-full h-auto object-cover rounded-lg shadow-lg"
       src={discord}
       alt="Community"
     />

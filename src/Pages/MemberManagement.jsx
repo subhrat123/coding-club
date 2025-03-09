@@ -4,12 +4,15 @@ const MemberManagement = () => {
   const [search, setSearch] = useState("");
   const [teamFilter, setTeamFilter] = useState("");
   const [roleFilter, setRoleFilter] = useState("");
-
-  const users = [
-    { name: "Alice Johnson", email: "alice@example.com", team: "Engineering", role: "Admin" },
-    { name: "Bob Smith", email: "bob@example.com", team: "Marketing", role: "Member" },
-    { name: "Charlie Brown", email: "charlie@example.com", team: "Sales", role: "Guest" },
-  ];
+  const [users, setUsers] = useState([
+    { id: 1, name: "Alice Johnson", email: "alice@example.com", team: "Engineering", role: "Admin" },
+    { id: 2, name: "Bob Smith", email: "bob@example.com", team: "Marketing", role: "Member" },
+    { id: 3, name: "Charlie Brown", email: "charlie@example.com", team: "Sales", role: "Guest" },
+  ]);
+  const [newMember, setNewMember] = useState({ name: "", email: "", team: "", role: "" });
+  const [editMember, setEditMember] = useState(null);
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
 
   const filteredUsers = users.filter(
     (user) =>
@@ -17,6 +20,26 @@ const MemberManagement = () => {
       (teamFilter ? user.team === teamFilter : true) &&
       (roleFilter ? user.role === roleFilter : true)
   );
+
+  const handleAddMember = () => {
+    // Only add if all fields are filled.
+    if (!newMember.name || !newMember.email || !newMember.team || !newMember.role) return;
+    setUsers([...users, { id: Date.now(), ...newMember }]);
+    setNewMember({ name: "", email: "", team: "", role: "" });
+    setShowAddModal(false);
+  };
+
+  const handleEditMember = (id) => {
+    const member = users.find((user) => user.id === id);
+    setEditMember(member);
+    setShowEditModal(true);
+  };
+
+  const handleSaveEdit = () => {
+    setUsers(users.map((user) => (user.id === editMember.id ? editMember : user)));
+    setEditMember(null);
+    setShowEditModal(false);
+  };
 
   return (
     <div className="p-6 min-h-screen">
@@ -33,7 +56,7 @@ const MemberManagement = () => {
 
         <select
           onChange={(e) => setTeamFilter(e.target.value)}
-          className="w-full md:w-1/4 p-2 border rounded"
+          className="bg-[#141327] text-white w-full md:w-1/4 p-2 border rounded "
         >
           <option value="">All Teams</option>
           <option value="Engineering">Engineering</option>
@@ -43,7 +66,7 @@ const MemberManagement = () => {
 
         <select
           onChange={(e) => setRoleFilter(e.target.value)}
-          className="w-full md:w-1/4 p-2 border rounded"
+          className="bg-[#141327] text-white w-full md:w-1/4 p-2 border rounded"
         >
           <option value="">All Roles</option>
           <option value="Admin">Admin</option>
@@ -51,8 +74,98 @@ const MemberManagement = () => {
           <option value="Guest">Guest</option>
         </select>
 
-        <button className="bg-blue-600 text-white px-4 py-2 rounded">Add Member</button>
+        <button onClick={() => setShowAddModal(true)} className="bg-blue-600 text-white px-4 py-2 rounded">
+          Add Member
+        </button>
       </div>
+
+      {showEditModal && editMember && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-[#040313] text-white p-6 rounded-lg shadow-lg">
+            <h2 className="text-lg font-bold mb-4">Edit Member</h2>
+            <input
+              type="text"
+              placeholder="Name"
+              value={editMember.name}
+              onChange={(e) => setEditMember({ ...editMember, name: e.target.value })} 
+              className="bg-[#141327] text-white p-2 border rounded mb-2 w-full"
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              value={editMember.email}
+              onChange={(e) => setEditMember({ ...editMember, email: e.target.value })} 
+              className="bg-[#141327] text-white p-2 border rounded mb-2 w-full"
+            />
+            <input
+              type="text"
+              placeholder="Team"
+              value={editMember.team}
+              onChange={(e) => setEditMember({ ...editMember, team: e.target.value })} 
+              className="bg-[#141327] text-white p-2 border rounded mb-2 w-full"
+            />
+            <input
+              type="text"
+              placeholder="Role"
+              value={editMember.role}
+              onChange={(e) => setEditMember({ ...editMember, role: e.target.value })} 
+              className="bg-[#141327] text-white p-2 border rounded mb-2 w-full"
+            />
+            <div className="flex justify-end gap-2">
+              <button onClick={handleSaveEdit} className="bg-blue-600 text-white px-4 py-2 rounded">
+                Save
+              </button>
+              <button onClick={() => setShowEditModal(false)} className="bg-gray-600 text-white px-4 py-2 rounded">
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showAddModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-[#040313] text-white p-6 rounded-lg shadow-lg">
+            <h2 className="text-lg font-bold mb-4">Add New Member</h2>
+            <input
+              type="text"
+              placeholder="Name"
+              value={newMember.name}
+              onChange={(e) => setNewMember({ ...newMember, name: e.target.value })} 
+              className="bg-[#141327] text-white p-2 border rounded mb-2 w-full"
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              value={newMember.email}
+              onChange={(e) => setNewMember({ ...newMember, email: e.target.value })} 
+              className="bg-[#141327] text-white p-2 border rounded mb-2 w-full"
+            />
+            <input
+              type="text"
+              placeholder="Team"
+              value={newMember.team}
+              onChange={(e) => setNewMember({ ...newMember, team: e.target.value })} 
+              className="bg-[#141327] text-white p-2 border rounded mb-2 w-full"
+            />
+            <input
+              type="text"
+              placeholder="Role"
+              value={newMember.role}
+              onChange={(e) => setNewMember({ ...newMember, role: e.target.value })} 
+              className="bg-[#141327] text-white p-2 border rounded mb-2 w-full"
+            />
+            <div className="flex justify-end gap-2">
+              <button onClick={handleAddMember} className="bg-blue-600 text-white px-4 py-2 rounded">
+                Add
+              </button>
+              <button onClick={() => setShowAddModal(false)} className="bg-gray-600 text-white px-4 py-2 rounded">
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="bg-[#141327] text-white p-4 rounded-lg shadow-md">
         <table className="w-full border-collapse border border-gray-700">
@@ -66,14 +179,16 @@ const MemberManagement = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredUsers.map((user, index) => (
-              <tr key={index} className="odd:bg-gray-900 even:bg-gray-800">
+            {filteredUsers.map((user) => (
+              <tr key={user.id} className="odd:bg-gray-900 even:bg-gray-800">
                 <td className="border border-gray-700 px-4 py-2">{user.name}</td>
                 <td className="border border-gray-700 px-4 py-2">{user.email}</td>
                 <td className="border border-gray-700 px-4 py-2">{user.team}</td>
                 <td className="border border-gray-700 px-4 py-2">{user.role}</td>
                 <td className="border border-gray-700 px-4 py-2">
-                  <button className="bg-blue-600 text-white font-semibold px-3 py-1 rounded">Edit</button>
+                  <button onClick={() => handleEditMember(user.id)} className="bg-blue-600 text-white font-semibold px-3 py-1 rounded">
+                    Edit
+                  </button>
                 </td>
               </tr>
             ))}
