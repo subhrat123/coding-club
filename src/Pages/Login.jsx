@@ -12,36 +12,26 @@ export default function AuthPage() {
 
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
-    const response = await registerUser({
-      username,
-      name,
-      email,
-      password,
-    });
-    if (response.status === 201) {
+    try {
+      await registerUser({ username, name, email, password });
       alert("User created successfully!");
-    } else {
-      alert(response.data.message)
-      alert("Error creating user!");
+    } catch (error) {
+      console.error("Registration error:", error.response?.data || error.message);
+      alert(error.response?.data?.message || "Error creating user!");
     }
   };
 
-  const handleLoginSubmit = (e) => {
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
-    // Handle login logic here
-    const response = loginUser({
-      email,
-      password,
-    })
-    console.log(response);
-    if (response.status === 200) {
-      localStorage.setItem("token", response.data.token);
-      // localStorage.setItem("username", response.data.user.username);
+    try {
+      console.log(email, password);
+      const response = await loginUser({ email, password });
 
+      localStorage.setItem("token", response.data.token);
       alert("Login successful!");
-    } else {
-      // alert(response.data.message)
-      alert("Error logging in!");
+    } catch (error) {
+      console.error("Login error:", error.response?.data || error.message);
+      alert(error.response?.data?.message || "Error logging in!");
     }
   };
 
@@ -150,11 +140,16 @@ export default function AuthPage() {
                   type="email"
                   placeholder="Email"
                   className="w-full p-2 mb-2 rounded bg-gray-700 text-white outline-none"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+
                 />
                 <input
                   type="password"
                   placeholder="Password"
                   className="w-full p-2 mb-4 rounded bg-gray-700 text-white outline-none"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
                 <button className="w-full p-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition" onClick={handleLoginSubmit}>
                   Login

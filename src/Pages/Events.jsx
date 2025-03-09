@@ -11,7 +11,6 @@ import cybersec from "../Images/cybersec.jpg";
 import ux from "../Images/ux.png";
 import cloud from "../Images/cloud.png";
 import git from "../Images/git.png";
-import java25 from "../Images/java24.jpg";
 
 const eventData = [
   {
