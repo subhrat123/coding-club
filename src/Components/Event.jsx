@@ -1,5 +1,5 @@
 import React from "react";
-import image from "../Images/image.png"
+import image from "../Images/image.png";
 
 const Event = ({ Imgsrc, info, onMouseEnter, onMouseLeave }) => {
   return (
@@ -15,7 +15,7 @@ const Event = ({ Imgsrc, info, onMouseEnter, onMouseLeave }) => {
       onMouseLeave={onMouseLeave}
     >
       <img
-        src={ image }
+        src={image}
         alt="Event"
         style={{
           width: "50px",
@@ -24,6 +24,7 @@ const Event = ({ Imgsrc, info, onMouseEnter, onMouseLeave }) => {
           margin: "-20px",
         }}
       />
+
       <img
         src={Imgsrc}
         alt="Event"
@@ -36,7 +37,7 @@ const Event = ({ Imgsrc, info, onMouseEnter, onMouseLeave }) => {
         }}
       />
       <img
-        src= {image}
+        src={image}
         alt="Event"
         style={{
           width: "50px",
@@ -49,3 +50,16 @@ const Event = ({ Imgsrc, info, onMouseEnter, onMouseLeave }) => {
 };
 
 export default Event;
+/*{Array.from({ length: 8 }).map((_, i) => (
+  <div
+    key={i}
+    style={{
+      width: "50px",
+      height: "5px",
+      background:
+        "linear-gradient(90deg,rgba(0,0,0,0.8), rgba(255,255,255,0.5), rgba(0,0,0,0.8))",
+      borderRadius: "5px",
+      margin: "0 10px",
+    }}
+  />
+))}*/
