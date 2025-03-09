@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { Table } from "flowbite-react";
 
-const AdminMembers = () => {
+const MemberManagement = () => {
   const [search, setSearch] = useState("");
   const [teamFilter, setTeamFilter] = useState("");
   const [roleFilter, setRoleFilter] = useState("");
@@ -21,25 +20,31 @@ const AdminMembers = () => {
 
   return (
     <div className="p-6 min-h-screen">
-      <h1 className="text-2xl font-bold mb-4">Members Management</h1>
-      
+      <h1 className="text-white text-2xl font-bold mb-4">Members Management</h1>
+
       <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6">
         <input
           type="text"
           placeholder="Search members..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full md:w-1/3 p-2 border rounded"
+          className="bg-[#141327] text-white w-full md:w-1/3 p-2 border rounded"
         />
-        
-        <select onChange={(e) => setTeamFilter(e.target.value)} className="w-full md:w-1/4 p-2 border rounded">
+
+        <select
+          onChange={(e) => setTeamFilter(e.target.value)}
+          className="w-full md:w-1/4 p-2 border rounded"
+        >
           <option value="">All Teams</option>
           <option value="Engineering">Engineering</option>
           <option value="Marketing">Marketing</option>
           <option value="Sales">Sales</option>
         </select>
 
-        <select onChange={(e) => setRoleFilter(e.target.value)} className="w-full md:w-1/4 p-2 border rounded">
+        <select
+          onChange={(e) => setRoleFilter(e.target.value)}
+          className="w-full md:w-1/4 p-2 border rounded"
+        >
           <option value="">All Roles</option>
           <option value="Admin">Admin</option>
           <option value="Member">Member</option>
@@ -49,32 +54,34 @@ const AdminMembers = () => {
         <button className="bg-blue-600 text-white px-4 py-2 rounded">Add Member</button>
       </div>
 
-      <div className="bg-white p-4 rounded-lg shadow-md">
-        <Table>
-          <Table.Head>
-            <Table.HeadCell>Name</Table.HeadCell>
-            <Table.HeadCell>Email</Table.HeadCell>
-            <Table.HeadCell>Team</Table.HeadCell>
-            <Table.HeadCell>Role</Table.HeadCell>
-            <Table.HeadCell>Action</Table.HeadCell>
-          </Table.Head>
-          <Table.Body>
+      <div className="bg-[#141327] text-white p-4 rounded-lg shadow-md">
+        <table className="w-full border-collapse border border-gray-700">
+          <thead>
+            <tr className="bg-gray-800">
+              <th className="border border-gray-700 px-4 py-2">Name</th>
+              <th className="border border-gray-700 px-4 py-2">Email</th>
+              <th className="border border-gray-700 px-4 py-2">Team</th>
+              <th className="border border-gray-700 px-4 py-2">Role</th>
+              <th className="border border-gray-700 px-4 py-2">Action</th>
+            </tr>
+          </thead>
+          <tbody>
             {filteredUsers.map((user, index) => (
-              <Table.Row key={index}>
-                <Table.Cell>{user.name}</Table.Cell>
-                <Table.Cell>{user.email}</Table.Cell>
-                <Table.Cell>{user.team}</Table.Cell>
-                <Table.Cell>{user.role}</Table.Cell>
-                <Table.Cell>
-                  <button className="bg-gray-200 text-black px-3 py-1 rounded">Edit</button>
-                </Table.Cell>
-              </Table.Row>
+              <tr key={index} className="odd:bg-gray-900 even:bg-gray-800">
+                <td className="border border-gray-700 px-4 py-2">{user.name}</td>
+                <td className="border border-gray-700 px-4 py-2">{user.email}</td>
+                <td className="border border-gray-700 px-4 py-2">{user.team}</td>
+                <td className="border border-gray-700 px-4 py-2">{user.role}</td>
+                <td className="border border-gray-700 px-4 py-2">
+                  <button className="bg-blue-600 text-white font-semibold px-3 py-1 rounded">Edit</button>
+                </td>
+              </tr>
             ))}
-          </Table.Body>
-        </Table>
+          </tbody>
+        </table>
       </div>
     </div>
   );
 };
 
-export default AdminMembers;
+export default MemberManagement;
