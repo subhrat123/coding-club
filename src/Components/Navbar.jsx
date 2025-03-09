@@ -5,13 +5,14 @@ import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 
 function Navbar() {
+  
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <nav className="flex items-center justify-between px-6 md:px-20 py-4 bg-[#040313] h-[80px] text-white relative z-50">
       <div className="flex items-center space-x-8 md:space-x-16">
         <a
-          href="#"
+          href="/"
           className="text-white font-bold text-lg leading-none flex flex-col items-center"
           style={{ fontFamily: "Orbitron, sans-serif" }}
         >
@@ -24,9 +25,9 @@ function Navbar() {
           className="hidden md:flex space-x-8 text-sm opacity-95"
           style={{ fontFamily: "Inter, sans-serif" }}
         >
-          <ScrollLink to="landing" smooth={true} duration={500} className="hover:text-gray-300 cursor-pointer">Home</ScrollLink>
-          <ScrollLink to="pricing" smooth={true} duration={500} className="hover:text-gray-300 cursor-pointer">Pricing</ScrollLink>
-          <ScrollLink to="about" smooth={true} duration={500} className="hover:text-gray-300 cursor-pointer">About Us</ScrollLink>
+          <ScrollLink to="landing" smooth={true} duration={500} className="hover:text-gray-300 cursor-pointer"><Link to="/" className="hover:text-gray-300">Home</Link></ScrollLink>
+          <ScrollLink to="pricing" smooth={true} duration={500} className="hover:text-gray-300 cursor-pointer"><Link to="/" className="hover:text-gray-300">Pricing</Link></ScrollLink>
+          <ScrollLink to="about" smooth={true} duration={500} className="hover:text-gray-300 cursor-pointer"><Link to="/" className="hover:text-gray-300">About</Link></ScrollLink>
           <Link to="/team" className="hover:text-gray-300">Team</Link>
         </div>
       </div>
