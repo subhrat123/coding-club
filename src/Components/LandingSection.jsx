@@ -23,7 +23,7 @@ function LandingSection() {
         playsInline
       ></video>
 
-      <div className="relative z-10 flex mt-10 justify-center max-md:h-[80vh] md:min-h-[80vh]">
+      <div className="relative z-10 flex mt-10 justify-center max-md:h-full md:min-h-[80vh]">
         <div className="text-center align-bottom text-white px-4 sm:px-6 lg:px-8">
           <a
             href="#events"
@@ -32,7 +32,7 @@ function LandingSection() {
           >
             LET'S DIVE INTO THE WORLD OF CODING
           </a>
-          <div className="flex flex-col md:gap-20 max-md:gap-60 w-full h-full relative max-md:top-20 md:top-40 sm:top-60 lg:top-80">
+          <div className="flex flex-col md:gap-20 max-md:gap-48 w-full h-[90vh] relative max-md:top-12 md:top-40 sm:top-60 lg:top-80">
             <div className="mt-7 h-6 text-3xl sm:text-5xl lg:text-7xl shadow-2xl font-semibold font-sora mb-10 animate-fadeIn text-width transition-all duration-500 ease-in-out">
               Learn Inspire Grow with Us
             </div>
