@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Define the base URL for API requests (update as needed)
-const API_BASE_URL = "https://ccbackend-leuz.onrender.com/api/";
+const API_BASE_URL = "https://ccbackend-gateway.onrender.com/api/";
 
 // Axios instance with default config
 const api = axios.create({
