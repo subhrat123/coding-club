@@ -31,6 +31,7 @@ export default function FAQAccordion() {
 
   useEffect(() => {
     // Dynamically set --max-height based on content height
+    // eslint-disable-next-line no-unused-vars
     contentRefs.current.forEach((ref, index) => {
       if (ref) {
         ref.style.setProperty("--max-height", ref.scrollHeight + "px");
