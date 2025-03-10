@@ -1,13 +1,12 @@
-import React from 'react';
 
-import LandingSection from '../Components/LandingSection';
-import AboutPage from '../Components/AboutPage';
-import Footer from '../Components/Footer';
-import PricingSection from '../Components/PricingSection';
-import FAQs from '../Components/FAQs';
-import Timeline from '../Components/Timeline';
-import Teams from '../Components/Teams';
-import Discord from '../Components/Discord';
+import LandingSection from '../Components/LandingSection.jsx';
+import AboutPage from '../Components/AboutPage.jsx';
+import Footer from '../Components/Footer.jsx';
+import PricingSection from '../Components/PricingSection.jsx';
+import FAQs from '../Components/FAQs.jsx';
+import Timeline from '../Components/Timeline.jsx';
+import Teams from '../Components/Teams.jsx';
+import Discord from '../Components/Discord.jsx';
 
 function LandingPage() {
   return (

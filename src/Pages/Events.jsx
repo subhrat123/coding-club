@@ -1,4 +1,3 @@
-import React from "react";
 
 import codingo from "../Images/codingo.png";
 import web_dev from "../Images/web_dev.avif";
@@ -11,7 +10,7 @@ import cybersec from "../Images/cybersec.jpg";
 import ux from "../Images/ux.png";
 import cloud from "../Images/cloud.png";
 import git from "../Images/git.png";
-import java25 from "../Images/java24.jpg";
+import PropTypes from "prop-types";
 
 const eventData = [
   {
@@ -110,6 +109,13 @@ const EventCard = ({ title, date, description, Imgsrc }) => {
       <p className="text-sm text-gray-200 mt-1">{description}</p>
     </div>
   );
+};
+
+EventCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  Imgsrc: PropTypes.string.isRequired,
 };
 
 const Events = () => {
