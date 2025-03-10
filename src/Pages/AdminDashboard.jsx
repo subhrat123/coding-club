@@ -1,19 +1,20 @@
 import React from "react";
+import DSA from "./DSA";
 
 const AdminDashboard = () => {
   return (
-    <div className="min-h-screen bg-[#0f011e]">
+    <div className="min-h-screen bg-[#040313]">
       {/* Header */}
-      <header className="bg-purple-950 text-white py-4">
+      <header className="bg-[#070620] text-white py-4">
         <h1 className="text-center text-3xl font-bold">Admin Dashboard</h1>
       </header>
 
       {/* Main Content */}
-      <main className="p-4 md:p-8 ">
+      <main className="p-4 md:p-8">
         {/* Row 1 */}
         <div className="flex flex-col md:flex-row justify-center mb-4 gap-4">
           {/* Box 1 */}
-          <div className="shadow-md rounded-lg p-6 w-full md:w-1/3 h-60 bg-[#622c7d6f]">
+          <div className="shadow-md rounded-lg p-6 w-full md:w-1/3 h-60 bg-[#141327]">
             <h2 className="text-xl text-center font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-100 to-purple-500">
               Team Management
             </h2>
@@ -35,8 +36,8 @@ const AdminDashboard = () => {
           </div>
 
           {/* Box 2 */}
-          <div className="shadow-md rounded-lg p-6 w-full  md:w-1/3 h-60 bg-[#622c7d6f]">
-            <h2 className="text-xl text-center font-bold  mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-100 to-purple-500">
+          <div className="shadow-md rounded-lg p-6 w-full md:w-1/3 h-60 bg-[#141327]">
+            <h2 className="text-xl text-center font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-100 to-purple-500">
               Member Management
             </h2>
             <div className="flex justify-center mb-4">
@@ -59,7 +60,7 @@ const AdminDashboard = () => {
 
         {/* Row 2 */}
         <div className="flex justify-center mb-6">
-          <div className="shadow-md rounded-lg p-6 w-full md:w-1/3 h-55 bg-[#622c7d6f]">
+          <div className="shadow-md rounded-lg p-6 w-full md:w-1/3 h-55 bg-[#191832]">
             <h2 className="text-xl text-center font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-100 to-purple-500">
               Event Management
             </h2>
@@ -80,27 +81,7 @@ const AdminDashboard = () => {
             </div>
           </div>
         </div>
-
-        {/* Row 3 */}
-        <div className="flex justify-center mb-2">
-          <div className="shadow-md rounded-lg p-6 w-full md:w-3/4 h-40 bg-[#622c7d6f]">
-            <h2 className="text-xl font-bold mb-2 text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-purple-700">
-              Problem Statement
-            </h2>
-            <div className="mb-4 text-center text-gray-300 font-inter">
-              <p>
-                Given a string s, find the length of the longest substring
-                without repeating characters. The substring consists of
-                contiguous characters and does not include any duplicates. You
-                need to return the length of this substring. For example, in the
-                input string "abcabcbb", the answer would be 3 because the
-                longest substring without repeating characters is "abc". Your
-                solution should aim to work efficiently, with a time complexity
-                of O(n).
-              </p>
-            </div>
-          </div>
-        </div>
+        <DSA />
       </main>
     </div>
   );
