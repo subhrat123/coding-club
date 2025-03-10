@@ -79,7 +79,7 @@ export default function Pricing() {
 
   return (
     <div
-      className="min-h-screen mt-[100px] mb-[100px] bg-[#040313] text-white py-20 px-4"
+      className="min-h-screen  mb-[100px] bg-[#040313] text-white py-20 px-4"
       style={{ fontFamily: "Sora, sans-serif" }}
     >
       <div className="max-w-6xl mx-auto space-y-12">
