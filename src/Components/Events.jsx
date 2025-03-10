@@ -17,7 +17,7 @@ const EventCard = ({ event }) => {
   console.log(event);
 
   return (
-    <div className="max-w-md bg-white rounded-lg shadow-lg p-4">
+    <div className="max-w-md rounded-lg shadow-lg p-4">
       <Slider {...settings}>
         {event.Imgsrc.map((img, index) => (
           <div key={index}>
@@ -30,9 +30,9 @@ const EventCard = ({ event }) => {
         ))}
       </Slider>
       <div className="mt-4 text-center">
-        <h2 className="text-xl font-bold">{event.title}</h2>
-        <p className="text-gray-600">{event.date}</p>
-        <p className="mt-2 text-gray-700">{event.description}</p>
+        <h2 className="text-xl text-white font-bold">{event.title}</h2>
+        <p className="text-gray-300">{event.date}</p>
+        <p className="mt-2 text-gray-300">{event.description}</p>
       </div>
     </div>
   );

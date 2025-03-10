@@ -55,11 +55,11 @@ function Timeline() {
   ];
 
   return (
-    <div className="bg-black text-white flex flex-col h-[80vh] items-center py-5">
+    <div className="bg-black text-white flex flex-col h-[80vh] items-center gap-10 py-5">
       <h1 className="text-4xl font-extrabold mb-5">Our Events</h1>
       <div
         ref={scrollRef}
-        className="flex overflow-x-auto whitespace-nowrap w-4/5 h-full py-5 relative scroll-container"
+        className="flex overflow-x-auto whitespace-nowrap px-20 w-4/5 h-full py-5 relative scroll-container"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
@@ -78,7 +78,7 @@ function Timeline() {
 
             {/* Event Card on Hover or Click */}
             {(hoveredEvent === index || clickedEvent === index) && (
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-72 z-[10] bg-white text-black p-4 rounded-lg shadow-lg">
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-72 z-[10] glassmorphism text-black p-4 rounded-lg shadow-lg">
                 <EventCard event={event} />
                 
               </div>
