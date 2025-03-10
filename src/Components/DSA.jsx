@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const DSAQuestionCard = () => {
   const [questions, setQuestions] = useState([
