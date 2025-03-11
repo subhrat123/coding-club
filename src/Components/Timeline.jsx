@@ -13,6 +13,9 @@ import ux from "../Images/ux.png";
 import cloud from "../Images/cloud.png";
 import git from "../Images/git.png";
 import java25 from "../Images/java24.jpg";
+import cybersec_1 from "../Images/cybersecurity_1.jpg";
+import cybersec_2 from "../Images/cybersecurity_2.jpg";
+import cybersec_3 from "../Images/cybersecurity_3.jpg";
 
 function Timeline() {
   const [hoveredEvent, setHoveredEvent] = useState(null);
@@ -42,18 +45,51 @@ function Timeline() {
   }, [isPaused]);
 
   const events = [
-    { src: codingo, info: "Codingo 3.0" },
+    { src: codingo, info: "Codingo 3.0", p1: "", p2: "" },
     { src: web_dev, info: "Web Development Session" },
     { src: Uipath, info: "UI Path" },
-    { src: ethical_hack, info: "Ethical Hacking Workshop" },
+    {
+      src: ethical_hack,
+      info: "Ethical Hacking Workshop",
+    },
     { src: avinya, info: "AVINYA 2.0" },
     { src: java24, info: "Java Bootcamp '24" },
-    { src: crossroads, info: "The Crossroads" },
-    { src: cybersec, info: "Roadmap to Cyber Security" },
-    { src: ux, info: "UI/UX" },
-    { src: cloud, info: "Cloud Session" },
-    { src: git, info: "Git and GitHub" },
-    { src: java25, info: "Java Bootcamp '25" },
+    {
+      src: crossroads,
+      info: "The Crossroads",
+      p1: "../Images/crossroads1.jpg",
+      p2: "../Images/crossroads2.jpg",
+      p3: "../Images/crossroads3.jpg",
+    },
+    {
+      src: cybersec,
+      info: "Roadmap to Cyber Security",
+      p1: "cybersec_1.jpg",
+      p2: "cybersec_2.jpg",
+      p3: "cybersec_3.jpg",
+    },
+    {
+      src: ux,
+      info: "UI/UX",
+      p1: "../Images/ui1.png",
+      p2: "../Images/ui2.png",
+      p3: "../Images/ui3.png",
+    },
+    { src: cloud, info: "Cloud Session" }, //No imgs
+    {
+      src: git,
+      info: "Git and GitHub",
+      p1: "../Images/git1.png",
+      p2: "../Images/git2.png",
+      p3: "../Images/git3.png",
+    },
+    {
+      src: java25,
+      info: "Java Bootcamp '25",
+      p1: "../Images/java251.png",
+      p2: "../Images/java252.png",
+      p3: "../Images/java253.png",
+    },
   ];
 
   const rev_events = [...events].reverse();
