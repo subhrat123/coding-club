@@ -1,6 +1,6 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useEffect, useRef } from "react";
-import React from "react";
-
+import bgvideo from '../Videos/reflectbg.mp4'
 function LandingSection() {
   const videoRef = useRef(null);
 
@@ -15,7 +15,7 @@ function LandingSection() {
       <video
         ref={videoRef}
         className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
-        src="src\Videos\reflect bg.mp4"
+        src={bgvideo}
         type="video/mp4"
         autoPlay
         loop
@@ -23,7 +23,7 @@ function LandingSection() {
         playsInline
       ></video>
 
-      <div className="relative z-10 flex mt-10 justify-center min-h-screen">
+      <div className="relative z-10 flex mt-10 justify-center max-md:h-full md:min-h-[80vh]">
         <div className="text-center align-bottom text-white px-4 sm:px-6 lg:px-8">
           <a
             href="#events"
@@ -32,12 +32,13 @@ function LandingSection() {
           >
             LET'S DIVE INTO THE WORLD OF CODING
           </a>
-          <div className="flex flex-col gap-20 w-full h-full relative top-40 sm:top-60 lg:top-80">
+          <div className="flex flex-col md:gap-20 max-md:gap-48 w-full h-[90vh] relative max-md:top-12 md:top-40 sm:top-60 lg:top-80">
             <div className="mt-7 h-6 text-3xl sm:text-5xl lg:text-7xl shadow-2xl font-semibold font-sora mb-10 animate-fadeIn text-width transition-all duration-500 ease-in-out">
               Learn Inspire Grow with Us
             </div>
+            <div className="flex flex-col gap-16">
             <p
-              className="text-base sm:text-lg md:text-xl justify-center text-center tracking-wide animate-fadeIn delay-1s mb-0 mx-auto max-w-4xl transition-all duration-500 ease-in-out"
+              className="text-base sm:text-lg md:text-lg justify-center text-center tracking-wide animate-fadeIn delay-1s mb-0 mx-auto max-w-4xl transition-all duration-500 ease-in-out"
               style={{ fontFamily: "Sora, sans-serif" }}
             >
               Dive into the world of innovation, creativity, and collaboration!
@@ -54,6 +55,8 @@ function LandingSection() {
                   Let's Get Started
                 </button>
               </a>
+            </div>
+
             </div>
           </div>
         </div>

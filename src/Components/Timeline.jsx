@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
-
+import { useNavigate } from "react-router-dom";
+import EventCard from "./Events.jsx";
 import codingo from "../Images/codingo.png";
 import web_dev from "../Images/web_dev.avif";
 import Uipath from "../Images/Uipath.png";
@@ -19,16 +19,15 @@ import cybersec_3 from "../Images/cybersecurity_3.jpg";
 
 function Timeline() {
   const [hoveredEvent, setHoveredEvent] = useState(null);
+  const [clickedEvent, setClickedEvent] = useState(null);
   const [isPaused, setIsPaused] = useState(false);
   const scrollRef = useRef(null);
-  const navigate = useNavigate(); // Navigation hook
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!scrollRef.current) return;
-
     let scrollSpeed = 1;
     const scrollContainer = scrollRef.current;
-
     const scrollInterval = setInterval(() => {
       if (!isPaused) {
         scrollContainer.scrollLeft += scrollSpeed;
@@ -40,11 +39,11 @@ function Timeline() {
         }
       }
     }, 50);
-
     return () => clearInterval(scrollInterval);
   }, [isPaused]);
 
   const events = [
+<<<<<<< HEAD
     { src: codingo, info: "Codingo 3.0", p1: "", p2: "" },
     { src: web_dev, info: "Web Development Session" },
     { src: Uipath, info: "UI Path" },
@@ -90,164 +89,64 @@ function Timeline() {
       p2: "../Images/java252.png",
       p3: "../Images/java253.png",
     },
+=======
+    { Imgsrc:[ codingo,java25], title: "Codingo 3.0", date: "2024", description: "A coding competition." },
+    { Imgsrc: [web_dev,java25], title: "Web Development Session", date: "2024", description: "Learn web development." },
+    { Imgsrc: [Uipath,java25], title: "UI Path", date: "2024", description: "Automation with UI Path." },
+    { Imgsrc: [ethical_hack,java25], title: "Ethical Hacking Workshop", date: "2024", description: "Cybersecurity basics." },
+    { Imgsrc: [avinya,java25], title: "AVINYA 2.0", date: "2024", description: "Tech fest event." },
+    { Imgsrc: [java24,java25], title: "Java Bootcamp '24", date: "2024", description: "Java fundamentals." },
+    { Imgsrc: [crossroads,java25], title: "The Crossroads", date: "2024", description: "Tech discussions." },
+    { Imgsrc: [cybersec,java25], title: "Roadmap to Cyber Security", date: "2024", description: "Cyber security roadmap." },
+    { Imgsrc: [ux,java25], title: "UI/UX", date: "2024", description: "UI/UX principles." },
+    { Imgsrc: [cloud,java25], title: "Cloud Session", date: "2024", description: "Cloud computing basics." },
+    { Imgsrc: [git,java25], title: "Git and GitHub", date: "2024", description: "Version control basics." },
+    { Imgsrc: [java25,java25], title: "Java Bootcamp '25", date: "2025", description: "Advanced Java concepts." },
+>>>>>>> c73235b8b69c6bf088feef43b7af04a7fd06a82e
   ];
 
-  const rev_events = [...events].reverse();
-
   return (
-    <div
-      style={{
-        backgroundColor: "#040313",
-        height: "80vh",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        paddingTop: "20px",
-        color: "white",
-      }}
-    >
-      <h2
-        style={{
-          fontFamily: "Roboto",
-          textAlign: "center",
-          fontSize: "2rem",
-          fontWeight: "bold",
-        }}
-      >
-        Our Events
-      </h2>
-
+    <div className="bg-black text-white flex flex-col h-[80vh] items-center gap-10 py-5">
+      <h1 className="text-4xl font-extrabold mb-5">Our Events</h1>
       <div
         ref={scrollRef}
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          overflowX: "auto",
-          whiteSpace: "nowrap",
-          width: "80vw",
-          padding: "20px",
-          position: "relative",
-          scrollbarWidth: "none",
-          msOverflowStyle: "none",
-        }}
-        className="scroll-container"
+        className="flex overflow-x-auto whitespace-nowrap px-20 w-4/5 h-full py-5 relative scroll-container"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            paddingBottom: "10px",
-            position: "relative",
-          }}
-        >
-          {rev_events.map((event, index) => (
-            <div
-              key={index}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                position: "relative",
-                margin: "0 10px",
-                cursor: "pointer", // Indicating it's clickable
-              }}
-              onClick={() => navigate("/events")} // Navigate on click
-              onMouseEnter={() => setHoveredEvent(index)}
-              onMouseLeave={() => setHoveredEvent(null)}
-            >
-              {/* Left Connector */}
-              {index > 0 && (
-                <div
-                  style={{
-                    width: "80px",
-                    height: "5px",
-                    background:
-                      "linear-gradient(90deg, rgba(255,255,255,0.5), rgba(255,255,255,0.8))",
-                    borderRadius: "5px",
-                    position: "absolute",
-                    left: "-90px",
-                    top: "50%",
-                    transform: "translateY(-50%)",
-                    margin: "0 10px",
-                  }}
-                />
-              )}
-
-              <div
-                style={{
-                  width: "120px",
-                  height: "120px",
-                  minWidth: "120px",
-                  borderRadius: "50%",
-                  overflow: "hidden",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backgroundColor: "#fff",
-                  boxShadow: "0 0 10px rgba(255, 255, 255, 0.2)",
-                  zIndex: 2,
-                }}
-              >
-                <img
-                  src={event.src}
-                  alt={event.info}
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                  }}
-                />
-              </div>
-
-              {/* Event Name Below */}
-              {hoveredEvent === index && (
-                <div
-                  style={{
-                    position: "absolute",
-                    top: "120px",
-                    background: "rgba(255, 255, 255, 0.8)",
-                    color: "black",
-                    padding: "5px 10px",
-                    borderRadius: "8px",
-                    fontFamily: "Sora",
-                    fontSize: "14px",
-                    textAlign: "center",
-                    whiteSpace: "nowrap",
-                    zIndex: 3,
-                  }}
-                >
-                  {event.info}
-                </div>
-              )}
-
-              {/* Right Connector */}
-              {index < rev_events.length - 1 && (
-                <div
-                  style={{
-                    width: "80px",
-                    height: "5px",
-                    background:
-                      "linear-gradient(90deg, rgba(255,255,255,0.5), rgba(255,255,255,0.8))",
-                    borderRadius: "5px",
-                    position: "absolute",
-                    right: "-90px",
-                    top: "50%",
-                    transform: "translateY(-50%)",
-                  }}
-                />
-              )}
+        {events.map((event, index) => (
+          <div
+            key={index}
+            className="relative mx-4 cursor-pointer"
+            onClick={() => setClickedEvent(index)}
+            onMouseEnter={() => setHoveredEvent(index)}
+            onMouseLeave={() => setHoveredEvent(null)}
+          >
+            {/* Event Image */}
+            <div className="w-28 h-28 rounded-full overflow-hidden bg-white shadow-lg">
+              <img src={event.Imgsrc[0]} alt={event.title} className="w-full h-full object-cover" />
             </div>
-          ))}
-        </div>
+
+            {/* Event Card on Hover or Click */}
+            {(hoveredEvent === index || clickedEvent === index) && (
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-72 z-[10] glassmorphism text-black p-4 rounded-lg shadow-lg">
+                <EventCard event={event} />
+                
+              </div>
+            )}
+          </div>
+        ))}
       </div>
 
+      {/* Hide Scrollbar */}
       <style>
         {`
           .scroll-container::-webkit-scrollbar {
             display: none;
+          }
+          .scroll-container {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
           }
         `}
       </style>

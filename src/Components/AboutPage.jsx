@@ -1,4 +1,3 @@
-import React from "react";
 const AboutPage = () => {
   return (
     <div className="relative min-h-screen text-white font-sans flex flex-col items-center justify-center">

@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import ProgressBar from '../components/progress-bar';
+import { useEffect, useState } from 'react';
+import ProgressBar from '../Components/ProgressBar.jsx';
+import { getUser } from '../api/userApi';
 
 const generateDots = (count) => {
   return Array.from({ length: count }, () => ({
@@ -53,14 +54,7 @@ const Profile = () => {
   const [isEditing, setIsEditing] = useState(false);
   
 
-  const [profile, setProfile] = useState({
-    name: "Subhrat Verma",
-    email: "abcd@gmail.com",
-    about: "Passionate web developer and programmer exploring the MERN stack.",
-    linkedin: "#",
-    leetcode: "#",
-    github: "#"
-  });
+  const [profile, setProfile] = useState({});
 
   const [leetcodeStats, setLeetcodeStats] = useState({
     all:{solved:0,total:0},
@@ -106,10 +100,21 @@ const Profile = () => {
 
     }
     );
+
+    const fetchUser = async () => {
+      try {
+        const res = await getUser();
+        console.log(res.data.user);
+        setProfile(res.data.user);
+      } catch (error) {
+        console.error('Error fetching user:', error);
+      }
+    };
+
+    fetchUser();
   }, []);
 
   const totalSolved =leetcodeStats.all.solved;
-  const totalQuestions = leetcodeStats.all.total;
   // const progressPercentage = totalQuestions > 0 ? (totalSolved / totalQuestions) * 100 : 0;
  
 
@@ -183,7 +188,7 @@ const Profile = () => {
               )}
               <hr className="w-[85%] " />
               <div className="flex flex-col justify-center items-center gap-6">
-                {['linkedin', 'leetcode', 'github'].map((field) => (
+                {profile.mem_prof_info?.skills.map((field) => (
             <p key={field} className="flex gap-4 justify-center items-center">
               <img className="h-8" src={`${field}.png`} alt={field} />
               {isEditing ? (
