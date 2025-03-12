@@ -50,16 +50,3 @@ const Event = ({ Imgsrc, info, onMouseEnter, onMouseLeave }) => {
 };
 
 export default Event;
-/*{Array.from({ length: 8 }).map((_, i) => (
-  <div
-    key={i}
-    style={{
-      width: "50px",
-      height: "5px",
-      background:
-        "linear-gradient(90deg,rgba(0,0,0,0.8), rgba(255,255,255,0.5), rgba(0,0,0,0.8))",
-      borderRadius: "5px",
-      margin: "0 10px",
-    }}
-  />
-))}*/
