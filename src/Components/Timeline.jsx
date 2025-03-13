@@ -34,7 +34,7 @@ import git3 from "../Images/git3.jpg";
 import codingo1 from "../Images/codingo1.jpg";
 import codingo2 from "../Images/codingo2.jpg";
 import codingo3 from "../Images/codingo3.jpg";
-import Uipath1 from "../Images/Uipath1.jpg";
+// import Uipath1 from "../Images/Uipath1.jpg";
 import Uipath2 from "../Images/Uipath2.jpg";
 import UIpath1 from "../Images/UIpath1.jpg";
 import UIpath3 from "../Images/UIpath3.jpg";
@@ -186,17 +186,17 @@ function Timeline() {
             {/* Event Card on Hover or Click */}
             {(hoveredEvent === index || clickedEvent === index) && (
               <div
-                className="absolute left-1/2 transform -translate-x-1/2 w-72 z-[10] glassmorphism text-black p-4 rounded-lg shadow-lg overflow-x-auto display-flex scrollbar-hide break-words whitespace-normal"
+                className="absolute left-1/2 transform -translate-x-1/2 max-md:w-72 md:w-100 z-[10] glassmorphism text-black p-4 rounded-lg shadow-lg overflow-x-auto display-flex scrollbar-hide break-words whitespace-normal"
                 style={{ zIndex: 3 }}
               >
                 <EventCard event={event} />
               </div>
             )}
             <div>
-              <div
+              {/* <div
                 className="w-8 h-2 bg-gradient-to-r from-white to-gray-300 absolute top-12 -left-6 transform -translate-x-1/4 -translate-y-1/2"
                 style={{ zIndex: 1 }}
-              ></div>
+              ></div> */}
             </div>
           </div>
         ))}
