@@ -170,7 +170,7 @@ function Timeline() {
           <div
             key={index}
             className="relative mx-4 cursor-pointer"
-            onClick={() => setClickedEvent(index)}
+           
             onMouseEnter={() => setHoveredEvent(index)}
             onMouseLeave={() => setHoveredEvent(null)}
           >
