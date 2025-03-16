@@ -9,7 +9,7 @@ const Home = () => {
 
       {/* content */}
       <div className="flex flex-col bg-[#141327] items-center gap-10 m-auto w-[80%] justify-center h-[50%] text-white">
-        <div className="text-2xl font-bold mt-10">
+        <div className="text-4xl font-bold inline-block text-transparent bg-clip-text bg-gradient-to-r from-purple-100 to-purple-500 mt-10" style={{ fontFamily: "Sora, sans-serif" }}>
           <h1>DISCORD COMMUNITY</h1>
         </div>
 

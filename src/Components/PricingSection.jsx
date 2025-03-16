@@ -79,11 +79,12 @@ export default function Pricing() {
 
   return (
     <div
-      className="min-h-screen  mb-[100px] bg-[#040313] text-white py-20 px-4"
+      className="min-h-screen  mb-[100px] bg-[#040313] text-white py-20 px-4 w-[80%] mx-auto glassmorphism"
       style={{ fontFamily: "Sora, sans-serif" }}
     >
+      <h1 className="text-3xl font-bold justify-center text-center mb-10 text-transparent bg-clip-text bg-gradient-to-r from-purple-100 to-purple-500">Coming Soon...Stay Tuned!</h1>
       <div className="max-w-6xl mx-auto space-y-12">
-        <h1 className="text-4xl font-bold text-center">Our Pricing Plans</h1>
+        <h1 className="text-4xl font-bold w-auto text-transparent bg-clip-text bg-gradient-to-r from-purple-100 to-purple-500 text-center" >Our Pricing Plans</h1>
         <div className="relative flex justify-center">
           <div className="grid md:grid-cols-3 gap-6">
             {plans.map((plan) => (

@@ -159,7 +159,7 @@ function Timeline() {
 
   return (
     <div className="bg-[#040313] text-white flex flex-col h-[100vh] items-center gap-10 py-5">
-      <h1 className="text-4xl font-extrabold mb-5">Our Events</h1>
+      <h1 className="text-4xl font-bold inline-block text-transparent bg-clip-text bg-gradient-to-r from-purple-100 to-purple-500" style={{ fontFamily: "Sora, sans-serif" }}>Our Events</h1>
       <div
         ref={scrollRef}
         className="flex overflow-x-auto whitespace-nowrap px-20 w-4/5 h-full py-5 relative scroll-container"

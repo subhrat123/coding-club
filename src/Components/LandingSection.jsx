@@ -35,7 +35,7 @@ function LandingSection() {
             LET'S DIVE INTO THE WORLD OF CODING
           </Link>
           <div className="flex flex-col md:gap-20 max-md:gap-48 w-full h-[90vh] relative max-md:top-12 md:top-40 sm:top-60 lg:top-80">
-            <div className="mt-7 h-6 text-3xl sm:text-5xl lg:text-7xl shadow-2xl font-semibold font-sora mb-10 animate-fadeIn text-width transition-all duration-500 ease-in-out">
+            <div className="mt-9 h-18 text-3xl sm:text-5xl lg:text-7xl shadow-2xl font-semibold font-sora animate-fadeIn text-width transition-all duration-500 ease-in-out text-transparent inline-block bg-clip-text bg-gradient-to-r from-purple-100 to-purple-600" style={{ fontFamily: "Sora, sans-serif" }}>
               Learn Inspire Grow with Us
             </div>
             <div className="flex flex-col gap-16">

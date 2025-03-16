@@ -13,9 +13,9 @@ const AboutPage = () => {
       {/* Overlay Content */}
       <div className="relative text-white mt-[100px]">
         <div className="relative z-10 max-w-4xl mx-auto text-center p-10">
-          <h1 className="text-4xl font-bold inline-block text-transparent bg-clip-text bg-gradient-to-r from-purple-100 to-purple-500">
+          <div className="text-4xl font-bold inline-block text-transparent bg-clip-text bg-gradient-to-r from-purple-100 to-purple-500" style={{ fontFamily: "Sora, sans-serif" }}>
             Why Coding Club RSCOE?
-          </h1>
+          </div>
           <p className="text-lg mt-4 text-gray-300 tracking-wide">
             The Coding Club is a vibrant community of tech enthusiasts
             passionate about software development, design, and emerging
