@@ -2,26 +2,21 @@ import { useState, useRef, useEffect } from "react";
 
 const faqs = [
   {
-    question: "I like it but I think it will be too difficult to customize",
+    question: "Why should I choose Coding Club RSCOE?",
     answer:
-      "Our templates are built with Tailwind CSS, making customization simple and efficient.",
+      "The Coding Club is a vibrant community of tech enthusiasts passionate about software development, design, and emerging technologies which will help you throughout your college journey.",
   },
   {
-    question: "What platform is the template made for?",
-    answer: "It is designed for modern web frameworks like React, Next.js, and Vue.",
+    question: "Can a student of any branch join Coding Club RSCOE?",
+    answer: "We only accept students from Computer Engineering, Compuuter and Business Systems and Information Technology.",
   },
   {
-    question: "Is it optimized for speed and performance?",
-    answer: "Yes! The template is lightweight, optimized for fast load times, and follows best practices.",
+    question: "What is the special 'Discord Benefit'?",
+    answer: "By joining any of the paid tiers, you get access to our special Discord Server, with curated channels and guidance from experienced seniors.",
   },
   {
-    question: "If I get stuck when customizing can I get help from you?",
-    answer: "Absolutely! We offer support and documentation to help you customize as needed.",
-  },
-  {
-    question: "Where will my site be hosted?",
-    answer:
-      "You can host your site on any platform like Vercel, Netlify, or traditional web hosting services.",
+    question: "Where can you contact us?",
+    answer: "You can contact us at our official mail or DM us on our official instagram handle",
   },
 ];
 

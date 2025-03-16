@@ -1,18 +1,17 @@
 // filepath: c:\Users\ypadw\Desktop\CC\Web\Website\CC Wwbsite Updated\CC Website\src\Components\Navbar.jsx
 import { Link as ScrollLink } from "react-scroll";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 
 function Navbar() {
-  
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <nav className="flex items-center justify-between px-6 md:px-20 py-4 bg-[#040313] h-[80px] text-white relative z-50">
       <div className="flex items-center space-x-8 md:space-x-16">
         <a
-          href="/"
+          href="#"
           className="text-white font-bold text-lg leading-none flex flex-col items-center"
           style={{ fontFamily: "Orbitron, sans-serif" }}
         >
@@ -25,22 +24,26 @@ function Navbar() {
           className="hidden md:flex space-x-8 text-sm opacity-95"
           style={{ fontFamily: "Inter, sans-serif" }}
         >
-          <ScrollLink to="landing" smooth={true} duration={500} className="hover:text-gray-300 cursor-pointer"><Link to="/" className="hover:text-gray-300">Home</Link></ScrollLink>
-          <ScrollLink to="pricing" smooth={true} duration={500} className="hover:text-gray-300 cursor-pointer"><Link to="/" className="hover:text-gray-300">Pricing</Link></ScrollLink>
-          <ScrollLink to="about" smooth={true} duration={500} className="hover:text-gray-300 cursor-pointer"><Link to="/" className="hover:text-gray-300">About</Link></ScrollLink>
+          <ScrollLink to="landing" smooth={true} duration={500} className="hover:text-gray-300 cursor-pointer">Home</ScrollLink>
+          <ScrollLink to="pricing" smooth={true} duration={500} className="hover:text-gray-300 cursor-pointer">Pricing</ScrollLink>
+          <ScrollLink to="about" smooth={true} duration={500} className="hover:text-gray-300 cursor-pointer">About Us</ScrollLink>
           <Link to="/team" className="hover:text-gray-300">Team</Link>
         </div>
       </div>
 
       <div className="hidden md:flex items-center space-x-10 text-sm opacity-95">
-        <Link to="/login" className="hover:text-gray-300">Login</Link>
-        <a
-          href="#"
-          className="px-4 py-2 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-700 text-white shadow-md"
-        >
-          Join Now
-        </a>
-      </div>
+    <Link to="/login" className="hover:text-gray-300">Login</Link>
+    <a
+      href="#"
+      className="px-4 py-2 rounded-lg border border-purple-600 text-white 
+                 hover:bg-gradient-to-r hover:from-purple-600 hover:to-indigo-700 
+                 hover:text-white transition-all duration-500 ease-in-out shadow-md"
+    >
+      Join Now
+    </a>
+</div>
+
+
 
       <button
         className="md:hidden text-white focus:outline-none"

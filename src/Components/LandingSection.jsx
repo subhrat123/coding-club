@@ -1,6 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useEffect, useRef } from "react";
 import bgvideo from '../Videos/reflectbg.mp4'
+import { Link } from "react-router-dom";
+
 function LandingSection() {
   const videoRef = useRef(null);
 
@@ -25,13 +27,13 @@ function LandingSection() {
 
       <div className="relative z-10 flex mt-10 justify-center max-md:h-full md:min-h-[80vh]">
         <div className="text-center align-bottom text-white px-4 sm:px-6 lg:px-8">
-          <a
-            href="#events"
+          <Link
+            to="/events"
             className="font-italic bg-transparent ring-1 ring-purple-600 text-semibold text-gradient-to-r from-purple-300 via-purple-200 to-purple-100 px-8 py-2 rounded-full shadow-lg hover:bg-purple-700 hover:text-white transition-all duration-300 mb-10 text-xs font-medium"
             style={{ fontFamily: "Inter, sans-serif" }}
           >
             LET'S DIVE INTO THE WORLD OF CODING
-          </a>
+          </Link>
           <div className="flex flex-col md:gap-20 max-md:gap-48 w-full h-[90vh] relative max-md:top-12 md:top-40 sm:top-60 lg:top-80">
             <div className="mt-7 h-6 text-3xl sm:text-5xl lg:text-7xl shadow-2xl font-semibold font-sora mb-10 animate-fadeIn text-width transition-all duration-500 ease-in-out">
               Learn Inspire Grow with Us

@@ -37,10 +37,10 @@ export default function AuthPage() {
 
   return (
     <div
-      className="flex items-center justify-center h-screen"
+      className="flex items-center justify-center min-h-screen p-4"
       style={{ fontFamily: "Inter, sans-serif" }}
     >
-      <div className="relative w-[48rem] h-[500px] perspective-1000">
+      <div className="relative w-full max-w-4xl h-[550px] perspective-1000">
         <motion.div
           className="absolute w-full h-full bg-[#141327] rounded-2xl shadow-lg flex"
           initial={{ rotateY: 0 }}
@@ -50,16 +50,14 @@ export default function AuthPage() {
         >
           {/* Front - Signup */}
           <div
-            className="absolute w-full h-full flex flex-row items-center justify-between px-12"
+            className="absolute w-full h-full flex flex-col md:flex-row items-center justify-between p-6"
             style={{ backfaceVisibility: "hidden" }}
           >
-            <div className="w-1/2 absolute">
-            {/* Signup Form */}
-            <div className="w-[280px] relative left-[20px] flex flex-col items-center">
+            <div className="w-full md:w-1/2 flex flex-col items-center">
               <h2 className="text-white text-2xl mb-4 font-semibold">
                 Sign Up
               </h2>
-              <form onSubmit={handleRegisterSubmit}>
+              <form className="w-full max-w-xs" onSubmit={handleRegisterSubmit}>
                 <input
                   type="text"
                   placeholder="Username"
@@ -100,75 +98,65 @@ export default function AuthPage() {
                 <span className="text-blue-400">Login</span>
               </p>
             </div>
-            </div>
+
             {/* Signup Image */}
-            <div className="w-[400px] flex items-center justify-center h-full">
-              <div className="relative left-[325px] bg-blue-600 items-center justify-center h-full ml-[50px] rounded-lg shadow-lg flex flex-col">
-                <img
-                  src={home}
-                  alt="Signup"
-                  className="h-[60%] w-[400px] justify-center items-center rounded-lg shadow-lg"
-                />
-              </div>
+            <div className="bg-blue-500 hidden md:flex w-1/2 h-full rounded-xl items-center justify-center">
+              <img
+                src={home}
+                alt="Signup"
+                className="h-[60%] w-full object-contain rounded-lg shadow-lg"
+              />
             </div>
           </div>
 
           {/* Back - Login */}
           <div
-            className="absolute w-full h-full flex flex-row items-center justify-between px-12"
+            className="absolute w-full h-full flex flex-col md:flex-row items-center justify-between p-6"
             style={{
               transform: "rotateY(180deg)",
               backfaceVisibility: "hidden",
             }}
-            >
-            <div className="grid grid-flow-col items-center justify-between h-full w-full">
-            {/* Login Image */}
-            <div className="absoulute w-[450px] flex items-center justify-center h-full">
-              <div className="relative right-[87px] bg-purple-600 items-center justify-center h-full rounded-lg shadow-lg flex flex-col w-[370px]">
-                <img
-                  src={home}
-                  alt="Signup"
-                  className="h-[60%] w-full justify-center items-center rounded-lg shadow-lg"
-                />
-              </div>
+          >
+            <div className="bg-purple-600 rounded-xl hidden md:flex w-1/2 h-full items-center justify-center">
+              <img
+                src={home}
+                alt="Login"
+                className="h-[60%] w-full object-contain rounded-lg shadow-lg"
+              />
             </div>
-            {/* Login Form */}
-            <div className="w-[280px] relative right-[65px] flex flex-col items-center outline-none">
+
+            <div className="w-full md:w-1/2 flex flex-col items-center">
               <h2 className="text-white text-2xl mb-4 font-semibold">Login</h2>
-              <form>
+              <form className="w-full max-w-xs" onSubmit={handleLoginSubmit}>
                 <input
                   type="email"
                   placeholder="Email"
-                  className="w-full p-2 mb-2 rounded bg-gray-700 text-white outline-none"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-
+                  className="w-full p-2 mb-2 rounded bg-gray-700 text-white outline-none"
                 />
                 <input
                   type="password"
                   placeholder="Password"
-                  className="w-full p-2 mb-4 rounded bg-gray-700 text-white outline-none"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  className="w-full p-2 mb-4 rounded bg-gray-700 text-white outline-none"
                 />
-                <button className="w-full p-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition" onClick={handleLoginSubmit}>
+                <button className="w-full p-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition">
                   Login
                 </button>
                 <p
                   className="text-gray-400 mt-4 cursor-pointer hover:text-gray-300"
                   onClick={() => setIsLogin(false)}
                 >
-                  Don&apos;t have an account?{" "}
+                  Don't have an account?{" "}
                   <span className="text-purple-400">Sign Up</span>
                 </p>
               </form>
             </div>
-            </div>
           </div>
-          
         </motion.div>
       </div>
     </div>
   );
 }
-
