@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Define the base URL for API requests (update as needed)
-const API_BASE_URL = "https://ccbackend-gateway.onrender.com/api/";
+const API_BASE_URL = "http://localhost:5000/api";
 
 // Axios instance with default config
 const api = axios.create({
@@ -15,6 +15,7 @@ const api = axios.create({
 
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
+  // console.log("Token from localStorage:", token);
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }

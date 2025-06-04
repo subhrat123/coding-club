@@ -7,6 +7,7 @@ import MemberManagement from "./Pages/MemberManagement";
 import TeamMem from "./Pages/TeamMem";
 import Profile from "./Pages/Profile";
 import Navbar from "./Components/Navbar";
+import AdminDashboard from "./Pages/AdminDashboard";
 
 function App() {
   return (
@@ -16,9 +17,10 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/events" element={<Events />} />
-        <Route path="/members" element={<MemberManagement />} />
+        <Route path="/members" element={<MemberManagement />} /> // admin member management
         <Route path="/team" element={<TeamMem />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/admin" element={<AdminDashboard />} />
       </Routes>
     </Router>
   );

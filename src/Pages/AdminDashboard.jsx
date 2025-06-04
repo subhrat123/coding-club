@@ -1,4 +1,4 @@
-import DSA from "./DSA";
+import DSA from "../Components/DSA";
 
 const AdminDashboard = () => {
   return (
