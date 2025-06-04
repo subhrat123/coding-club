@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
@@ -6,35 +7,22 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { div } from 'framer-motion/client';
 
-import web_dev from "../Images/web_dev.avif";
-import git from "../Images/git.png";
-import crossroads from "../Images/crossroads.jpg";
-
-const testimonials = [
-  {
-    id: 1,
-    title: 'Web Development Team',
-    text: 'Working with Valour was a fantastic experience. They fulfilled all my expectations flawlessly, and the final results were beyond excellent.',
-    name: 'XYZ',
-    image: web_dev,
-  },
-  {
-    id: 2,
-    title: 'Design Team',
-    text: 'Valour was a pleasure to work with. The design exceeded expectations, and the end results were absolutely great.',
-    name: 'ABC',
-    image: git,
-  },
-  {
-    id: 3,
-    title: 'Marketing Team',
-    text: 'The marketing team’s expertise helped boost our engagement significantly. A great collaboration!',
-    name: 'PQR',
-    image: crossroads,
-  },
-];
 
 const Teams = () => {
+
+  const [testimonials, setTestimonials] = useState([]);
+
+useEffect(() => {
+  axios.get('http://localhost:5000/items')  // Your backend URL
+    .then(res => setTestimonials(res.data.map(item => ({
+  id: item._id,
+  title: item.title,
+  text: item.text,  // if your backend uses 'description'
+  image: item.image || ''  // depending on your schema
+}))))
+    .catch(err => console.error(err));
+}, []);
+  
   return (
     <div>
       <div className="flex flex-col justify-center bg-[#040015] items-center h-[40vh] m-auto mt-40 mb-60 w-[80%] p-6">
