@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
@@ -49,8 +50,33 @@ const testimonials = [
     image: pr,
   },
 ];
+=======
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { div } from 'framer-motion/client';
+
+>>>>>>> 4bb514adcaf32ac77c12249aca17d2debba2d5d0
 
 const Teams = () => {
+
+  const [testimonials, setTestimonials] = useState([]);
+
+useEffect(() => {
+  axios.get('http://localhost:5000/items')  // Your backend URL
+    .then(res => setTestimonials(res.data.map(item => ({
+  id: item._id,
+  title: item.title,
+  text: item.text,  // if your backend uses 'description'
+  image: item.image || ''  // depending on your schema
+}))))
+    .catch(err => console.error(err));
+}, []);
+  
   return (
     <div>
       <div className="flex flex-col justify-center bg-[#040015] items-center h-[40vh] m-auto mt-40 mb-60 w-[80%] p-6">

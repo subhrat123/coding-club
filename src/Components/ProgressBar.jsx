@@ -46,7 +46,7 @@ const ProgressBar = ({ percentage = 50 }) => {
         fill="#c084fc"
         fontWeight="bold"
       >
-        {percentage}%
+        {percentage}
       </text>
     </svg>
   );
