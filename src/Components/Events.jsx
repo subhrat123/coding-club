@@ -1,7 +1,7 @@
-import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import PropTypes from "prop-types";
 
 const EventCard = ({ event }) => {
   const settings = {
@@ -36,6 +36,14 @@ const EventCard = ({ event }) => {
       </div>
     </div>
   );
+};
+EventCard.propTypes = {
+  event: PropTypes.shape({
+    Imgsrc: PropTypes.arrayOf(PropTypes.string).isRequired,
+    title: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default EventCard;

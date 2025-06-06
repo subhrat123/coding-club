@@ -7,6 +7,8 @@ import MemberManagement from "./Pages/MemberManagement";
 import TeamMem from "./Pages/TeamMem";
 import Profile from "./Pages/Profile";
 import Navbar from "./Components/Navbar";
+import EventPage from "./Pages/EventPage";
+import AdminDashboard from "./Pages/AdminDashboard";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
         <Route path="/members" element={<MemberManagement />} />
         <Route path="/team" element={<TeamMem />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/api/events" element={<EventPage />} />
+        <Route path="/admin" element={<AdminDashboard />} />
       </Routes>
     </Router>
   );

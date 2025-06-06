@@ -17,13 +17,19 @@ function Footer() {
               Join The Community
             </h2>
             <p className="mt-6 md:mt-8 lg:mt-10 text-gray-400 text-sm">
-              With Coding Club RSCOE, you can touch bounds you never even imagined of and learn what you never thought you could. Join us now and be a part of one of the most amazing communities in the world.     
+              With Coding Club RSCOE, you can touch bounds you never even
+              imagined of and learn what you never thought you could. Join us
+              now and be a part of one of the most amazing communities in the
+              world.
             </p>
           </div>
 
           {/* <!-- Right Section (Social Links) --> */}
           <div className="mt-10 md:mt-0">
-            <ul className="space-y-3 text-white opacity-90 text-xs" style={{ fontFamily: "Inter, sans-serif" }}>
+            <ul
+              className="space-y-3 text-white opacity-90 text-xs"
+              style={{ fontFamily: "Inter, sans-serif" }}
+            >
               <li className="flex items-center justify-between border-b border-gray-700 pb-4">
                 <span className="flex items-center">
                   <i className="fa-brands fa-facebook mr-2"></i> FACEBOOK
@@ -36,7 +42,10 @@ function Footer() {
                 <span className="flex items-center">
                   <i className="fa-brands fa-instagram mr-2"></i> INSTAGRAM
                 </span>
-                <a href="#" className="text-gray-400 hover:text-white ml-4">
+                <a
+                  href="https://www.instagram.com/codingclub.rscoe?igsh=cXBsN2dpbDRyMW05&utm_source=qr "
+                  className="text-gray-400 hover:text-white ml-4"
+                >
                   ↗
                 </a>
               </li>
@@ -44,7 +53,10 @@ function Footer() {
                 <span className="flex items-center">
                   <i className="fa-brands fa-linkedin mr-2"></i> LINKEDIN
                 </span>
-                <a href="#" className="text-gray-400 hover:text-white ml-4">
+                <a
+                  href="https://www.linkedin.com/company/coding-club-rscoe/"
+                  className="text-gray-400 hover:text-white ml-4"
+                >
                   ↗
                 </a>
               </li>

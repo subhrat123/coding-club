@@ -1,4 +1,3 @@
-
 import codingo from "../Images/codingo.png";
 import web_dev from "../Images/web_dev.avif";
 import Uipath from "../Images/Uipath.png";
@@ -11,6 +10,8 @@ import ux from "../Images/ux.png";
 import cloud from "../Images/cloud.png";
 import git from "../Images/git.png";
 import PropTypes from "prop-types";
+//import { useState } from "react";
+//import { FaTrash } from "react-icons/fa";
 
 const eventData = [
   {
