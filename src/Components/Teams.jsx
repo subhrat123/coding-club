@@ -5,7 +5,6 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { div } from "framer-motion/client";
 
 const Teams = () => {
   const [testimonials, setTestimonials] = useState([]);
