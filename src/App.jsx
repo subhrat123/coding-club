@@ -7,6 +7,7 @@ import MemberManagement from "./Pages/MemberManagement";
 import TeamMem from "./Pages/TeamMem";
 import Profile from "./Pages/Profile";
 import Navbar from "./Components/Navbar";
+import EventPage from "./Pages/EventPage";
 import AdminDashboard from "./Pages/AdminDashboard";
 
 function App() {

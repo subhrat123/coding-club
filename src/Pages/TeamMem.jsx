@@ -1,4 +1,4 @@
-import { FaLinkedin, FaTwitter, FaGithub } from "react-icons/fa";
+import { FaLinkedin, FaGithub } from "react-icons/fa";
 import Starfield from "../Components/StarField.jsx";
 
 const teams = [
@@ -203,70 +203,6 @@ const teams = [
     ],
   },
   {
-    name: "Design Team",
-    members: [
-      {
-        name: "Anushka Pawar",
-        role: "Designer",
-        description: "",
-        image: "",
-        socials: {
-          linkedin: "https://www.linkedin.com/in/anushka-pawar-26baa02b7/",
-          github: "#",
-          twitter: "#",
-        },
-      },
-      {
-        name: "Adwita Udare",
-        role: "Designer",
-        description: "",
-        image: "",
-        socials: {
-          linkedin: "https://www.linkedin.com/in/adwita-udare-07a4812b7/",
-          github: "#",
-          twitter: "#",
-        },
-      },
-    ],
-  },
-  {
-    name: "GFX Team",
-    members: [
-      /*{
-        name: "",
-        role: "",
-        description:
-          "",
-        image: "",
-        socials: { linkedin: "#", github: "#", twitter: "#" },
-      },*/
-      {
-        name: "Simrah Shaikh",
-        role: "GFX Lead",
-        description: "",
-        image: "",
-        socials: {
-          linkedin: "https://www.linkedin.com/in/simrah-shaikh-b473ab280/",
-          github: "#",
-          twitter: "#",
-        },
-      },
-      {
-        name: "Saundarya Karhade",
-        role: "GFX Creator",
-        description:
-          "CSE || BTECH || SY Savitribai Phule Pune University |Programmer |C &C++|DSA|JAVA|editor|Graphic Designing|",
-        image:
-          "https://media.licdn.com/dms/image/v2/D4D03AQEl7oxv7TCoNA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1718176905214?e=1747872000&v=beta&t=De712SV0oag8AgAL8wfDCo5Ph7wf3SfiBaU1Xx3-9Ak",
-        socials: {
-          linkedin: "https://www.linkedin.com/in/saundarya-karhade-1aa35b26a/",
-          github: "#",
-          twitter: "#",
-        },
-      },
-    ],
-  },
-  {
     name: "Operations and Outreach Team",
     members: [
       {
@@ -325,6 +261,72 @@ const teams = [
           "https://media.licdn.com/dms/image/v2/D4D03AQE2vqoE9jurTg/profile-displayphoto-shrink_200_200/B4DZVWQjTfHYAc-/0/1740908935711?e=1747872000&v=beta&t=6qpuJQTuBMW_JVggG4U0tlJyXM2ol4o_ivo4GuHtTdM",
         socials: {
           linkedin: "https://www.linkedin.com/in/ekta-phopale-535780292/",
+          github: "#",
+          twitter: "#",
+        },
+      },
+    ],
+  },
+  {
+    name: "Design Team",
+    members: [
+      {
+        name: "Anushka Pawar",
+        role: "Designer",
+        description: "",
+        image:
+          "https://media.licdn.com/dms/image/v2/D4D03AQHsPUdMxMboZg/profile-displayphoto-shrink_100_100/B4DZWj2CHJH4AY-/0/1742210617205?e=1747872000&v=beta&t=TnpjMvW-cbo_i7pN3xzH449yA9uRvdtzmof4an8aq40",
+        socials: {
+          linkedin: "https://www.linkedin.com/in/anushka-pawar-26baa02b7/",
+          github: "#",
+          twitter: "#",
+        },
+      },
+      {
+        name: "Adwita Udare",
+        role: "Designer",
+        description: "",
+        image: "",
+        socials: {
+          linkedin: "https://www.linkedin.com/in/adwita-udare-07a4812b7/",
+          github: "#",
+          twitter: "#",
+        },
+      },
+    ],
+  },
+  {
+    name: "GFX Team",
+    members: [
+      /*{
+        name: "",
+        role: "",
+        description:
+          "",
+        image: "",
+        socials: { linkedin: "#", github: "#", twitter: "#" },
+      },*/
+      {
+        name: "Simrah Shaikh",
+        role: "GFX Lead",
+        description:
+          "Exploring AI, ML & Web Dev | Coding My Way to Innovation ",
+        image:
+          "https://media.licdn.com/dms/image/v2/D4E03AQFnmlnJ3eOU2w/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1704919594501?e=1747872000&v=beta&t=hM9Cnz25ewUBnXtDBtwWjPuyTVsQaRDO6-QslSgRzHg",
+        socials: {
+          linkedin: "https://www.linkedin.com/in/simrah-shaikh-b473ab280/",
+          github: "#",
+          twitter: "#",
+        },
+      },
+      {
+        name: "Saundarya Karhade",
+        role: "GFX Creator",
+        description: "Programmer |C &C++|DSA|JAVA|editor|Graphic Designing|",
+        image:
+          "https://media.licdn.com/dms/image/v2/D4D03AQEl7oxv7TCoNA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1718176905214?e=1747872000&v=beta&t=De712SV0oag8AgAL8wfDCo5Ph7wf3SfiBaU1Xx3-9Ak",
+        socials: {
+          linkedin: "https://www.linkedin.com/in/saundarya-karhade-1aa35b26a/",
           github: "#",
           twitter: "#",
         },
