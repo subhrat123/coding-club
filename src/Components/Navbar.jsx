@@ -24,10 +24,11 @@ function Navbar() {
           className="hidden md:flex space-x-8 text-sm opacity-95"
           style={{ fontFamily: "Inter, sans-serif" }}
         >
-          <ScrollLink to="landing" smooth={true} duration={500} className="hover:text-gray-300 cursor-pointer">Home</ScrollLink>
-          <ScrollLink to="pricing" smooth={true} duration={500} className="hover:text-gray-300 cursor-pointer">Pricing</ScrollLink>
-          <ScrollLink to="about" smooth={true} duration={500} className="hover:text-gray-300 cursor-pointer">About Us</ScrollLink>
-          <Link to="/team" className="hover:text-gray-300">Team</Link>
+           <Link to="/" className="hover:text-gray-300 cursor-pointer">Home</Link>
+        <ScrollLink to="pricing" smooth={true} duration={500} className="hover:text-gray-300 cursor-pointer">Pricing</ScrollLink>
+        <ScrollLink to="about" smooth={true} duration={500} className="hover:text-gray-300 cursor-pointer">About Us</ScrollLink>
+        <Link to="/team" className="hover:text-gray-300">Team</Link>
+        <Link to="/events" className="hover:text-gray-300">Events</Link>
         </div>
       </div>
 
@@ -57,10 +58,12 @@ function Navbar() {
           isOpen ? "flex flex-col py-6 space-y-4 shadow-md items-center" : "hidden"
         }`}
       >
-        <ScrollLink to="landing" smooth={true} duration={500} className="hover:text-gray-300 cursor-pointer">Home</ScrollLink>
+        <Link to="/" className="hover:text-gray-300 cursor-pointer">Home</Link>
         <ScrollLink to="pricing" smooth={true} duration={500} className="hover:text-gray-300 cursor-pointer">Pricing</ScrollLink>
         <ScrollLink to="about" smooth={true} duration={500} className="hover:text-gray-300 cursor-pointer">About Us</ScrollLink>
         <Link to="/team" className="hover:text-gray-300">Team</Link>
+        <Link to="/events" className="hover:text-gray-300">events</Link>
+
 
         <div className="flex flex-col items-center space-y-4 mt-4">
           <Link to="/login" className="hover:text-gray-300">Login</Link>

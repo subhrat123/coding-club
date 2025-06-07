@@ -49,7 +49,7 @@ const AdminDashboard = () => {
             <div className="flex justify-center">
               <button
                 className="text-white px-4 py-2 rounded bg-gradient-to-r from-purple-700 to-indigo-900 shadow-md transition duration-300 ease-in-out hover:bg-purple-700 focus:ring-2 focus:ring-purple-600"
-                onClick={() => (window.location.href = "/MemberManagement")}
+                onClick={() => (window.location.href = "/admin/members")}
               >
                 Manage
               </button>
@@ -73,14 +73,14 @@ const AdminDashboard = () => {
             <div className="flex justify-center">
               <button
                 className="text-white px-4 py-2 rounded bg-gradient-to-r from-purple-700 to-indigo-900 shadow-md transition duration-300 ease-in-out hover:bg-purple-700 focus:ring-2 focus:ring-purple-600"
-                onClick={() => (window.location.href = "/Events.jsx")}
+                onClick={() => (window.location.href = "/Events")}
               >
                 Manage
               </button>
             </div>
           </div>
         </div>
-        <DSA />
+       
       </main>
     </div>
   );

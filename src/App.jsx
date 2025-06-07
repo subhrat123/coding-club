@@ -17,10 +17,10 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/events" element={<Events />} />
-        <Route path="/members" element={<MemberManagement />} /> // admin member management
         <Route path="/team" element={<TeamMem />} />
-        <Route path="/profile" element={<Profile />} />
+        {/* <Route path="/profile" element={<Profile />} /> */}
         <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/admin/members" element={<MemberManagement />} /> // admin member management
       </Routes>
     </Router>
   );
