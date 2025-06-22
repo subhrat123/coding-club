@@ -6,47 +6,59 @@ const EventForm = ({ onSubmit }) => {
     title: "",
     date: "",
     description: "",
-    imgSrc: "",
+    image: null,
   });
 
   const [isOpen, setIsOpen] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    const { name, value, files } = e.target;
+    if (name === "image") {
+      setFormData((prev) => ({ ...prev, image: files[0] }));
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(formData);
-    setFormData({ title: "", date: "", description: "", imgSrc: "" });
-    setIsOpen(false); // Close form after submit
+    const payload = new FormData();
+    payload.append("title", formData.title);
+    payload.append("date", formData.date);
+    payload.append("description", formData.description);
+    payload.append("image", formData.image); // name must match backend `image`
+
+    onSubmit(payload);
+    setFormData({
+      title: "",
+      date: "",
+      description: "",
+      image: null,
+    });
+    setIsOpen(false);
   };
 
   return (
     <div className="max-w-md mx-auto mb-8">
-      {/* Button to toggle form */}
-      <div className="flex justify-center">
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="mb-4 bg-purple-700 hover:bg-purple-900 text-white font-semibold px-6 py-3 rounded shadow-md transition"
-        >
-          {isOpen ? "Close Form ✖️" : "Add Event ➕"}
-        </button>
-      </div>
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="mb-4 bg-purple-700 hover:bg-purple-900 text-white font-semibold px-6 py-3 rounded shadow-md transition"
+      >
+        {isOpen ? "Close Form ✖️" : "Add Event ➕"}
+      </button>
 
-      {/* Conditionally render form */}
       {isOpen && (
         <form
           onSubmit={handleSubmit}
           className="bg-black bg-opacity-80 p-6 rounded-xl shadow-xl text-white"
+          encType="multipart/form-data"
         >
           <input
             name="title"
             value={formData.title}
             onChange={handleChange}
             placeholder="Event Title"
-            className="w-full p-3 mb-4 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-600"
+            className="w-full p-3 mb-4 rounded bg-gray-800 text-white placeholder-gray-400"
             required
           />
           <input
@@ -54,8 +66,7 @@ const EventForm = ({ onSubmit }) => {
             name="date"
             value={formData.date}
             onChange={handleChange}
-            placeholder="Event Date"
-            className="w-full p-3 mb-4 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-600"
+            className="w-full p-3 mb-4 rounded bg-gray-800 text-white"
             required
           />
           <textarea
@@ -64,15 +75,15 @@ const EventForm = ({ onSubmit }) => {
             onChange={handleChange}
             placeholder="Description"
             rows={4}
-            className="w-full p-3 mb-4 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-600 resize-none"
+            className="w-full p-3 mb-4 rounded bg-gray-800 text-white"
             required
           />
           <input
-            name="imgSrc"
-            value={formData.imgSrc}
+            type="file"
+            name="image"
+            accept="image/*"
             onChange={handleChange}
-            placeholder="Image URL"
-            className="w-full p-3 mb-6 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-600"
+            className="w-full p-3 mb-6 rounded bg-gray-800 text-white"
             required
           />
           <button

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import EventCard from "../Components/EventCard";
+import EventCard from "../Components/Eventcard";
 import EventForm from "../Components/EventForm";
 import {
   fetchEvents,
@@ -11,13 +11,13 @@ import {
 const EventPage = () => {
   const [events, setEvents] = useState([]);
 
-  // Fetch Events on Mount
+  // 🔄 Fetch Events on Mount
   const loadEvents = async () => {
     try {
       const data = await fetchEvents();
       setEvents(data);
     } catch (error) {
-      console.error("Failed to load events:", error);
+      console.error("❌ Failed to load events:", error);
     }
   };
 
@@ -25,27 +25,27 @@ const EventPage = () => {
     loadEvents();
   }, []);
 
-  //  Add Event
+  // ➕ Add Event
   const handleAddEvent = async (newEvent) => {
     try {
-      const added = await addEvent(newEvent);
-      setEvents((prev) => [added.event, ...prev]); // added.event because backend sends { message, event }
+      await addEvent(newEvent);
+      loadEvents(); // re-fetch events from server
     } catch (error) {
-      console.error(" Failed to add event:", error);
+      console.error("❌ Failed to add event:", error);
     }
   };
 
-  // Delete Event
+  // ❌ Delete Event
   const handleDelete = async (id) => {
     try {
       await deleteEvent(id);
       setEvents((prev) => prev.filter((event) => event._id !== id));
     } catch (error) {
-      console.error(" Failed to delete event:", error);
+      console.error("❌ Failed to delete event:", error);
     }
   };
 
-  //  Edit Event (basic version using prompt)
+  // ✏️ Edit Event (basic version using prompt)
   const handleEdit = async (id) => {
     const eventToEdit = events.find((e) => e._id === id);
     if (!eventToEdit) return;
@@ -69,7 +69,7 @@ const EventPage = () => {
         prev.map((event) => (event._id === id ? updated : event))
       );
     } catch (error) {
-      console.error(" Failed to update event:", error);
+      console.error("❌ Failed to update event:", error);
     }
   };
 

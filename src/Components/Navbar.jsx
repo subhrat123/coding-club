@@ -9,18 +9,14 @@ function Navbar() {
 
   return (
     <nav className="flex items-center justify-between px-6 md:px-20 py-4 bg-[#040313] h-[80px] text-white relative z-50">
-      <div className="flex items-center space-x-8 md:space-x-16">
-        <a
-          href="#"
-          className="text-white font-bold text-lg leading-none flex flex-col items-center"
-          style={{ fontFamily: "Orbitron, sans-serif" }}
-        >
-          <span className="block text-[15px] text-center">CODING</span>
-          <span className="block text-[15px] text-center">CLUB</span>
-          <span className="block text-[10px] text-center text-blue-400">
-            RSCOE
-          </span>
-        </a>
+      <div className="flex items-center space-x-4 md:space-x-8">
+        <Link to="/">
+          <img
+            src="/logo.png"
+            alt="Coding Club RSCOE Logo"
+            className="w-10 sm:w-12 md:w-14 lg:w-18 h-auto transition-transform duration-300 ease-in-out hover:scale-105"
+          />
+        </Link>
 
         <div
           className="hidden md:flex space-x-8 text-sm opacity-95"
