@@ -1,5 +1,3 @@
-import DSA from "../Components/DSA";
-
 const AdminDashboard = () => {
   return (
     <div className="px-2 min-h-screen bg-[#040313]">
@@ -80,7 +78,6 @@ const AdminDashboard = () => {
             </div>
           </div>
         </div>
-       
       </main>
     </div>
   );

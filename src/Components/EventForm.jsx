@@ -6,47 +6,36 @@ const EventForm = ({ onSubmit }) => {
     title: "",
     date: "",
     description: "",
-    image: null, // store file here
+    imgSrc: "",
   });
 
   const [isOpen, setIsOpen] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value, files } = e.target;
-
-    if (name === "image") {
-      setFormData((prev) => ({ ...prev, image: files[0] }));
-    } else {
-      setFormData((prev) => ({ ...prev, [name]: value }));
-    }
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Create FormData to send files + text
-    const data = new FormData();
-    data.append("title", formData.title);
-    data.append("date", formData.date);
-    data.append("description", formData.description);
-    data.append("image", formData.image);
-
-    onSubmit(data);
-
-    // Reset form
-    setFormData({ title: "", date: "", description: "", image: null });
-    setIsOpen(false);
+    onSubmit(formData);
+    setFormData({ title: "", date: "", description: "", imgSrc: "" });
+    setIsOpen(false); // Close form after submit
   };
 
   return (
     <div className="max-w-md mx-auto mb-8">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="mb-4 bg-purple-700 hover:bg-purple-900 text-white font-semibold px-6 py-3 rounded shadow-md transition"
-      >
-        {isOpen ? "Close Form ✖️" : "Add Event ➕"}
-      </button>
+      {/* Button to toggle form */}
+      <div className="flex justify-center">
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="mb-4 bg-purple-700 hover:bg-purple-900 text-white font-semibold px-6 py-3 rounded shadow-md transition"
+        >
+          {isOpen ? "Close Form ✖️" : "Add Event ➕"}
+        </button>
+      </div>
 
+      {/* Conditionally render form */}
       {isOpen && (
         <form
           onSubmit={handleSubmit}
@@ -57,7 +46,7 @@ const EventForm = ({ onSubmit }) => {
             value={formData.title}
             onChange={handleChange}
             placeholder="Event Title"
-            className="w-full p-3 mb-4 rounded bg-gray-800 text-white"
+            className="w-full p-3 mb-4 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-600"
             required
           />
           <input
@@ -65,7 +54,8 @@ const EventForm = ({ onSubmit }) => {
             name="date"
             value={formData.date}
             onChange={handleChange}
-            className="w-full p-3 mb-4 rounded bg-gray-800 text-white"
+            placeholder="Event Date"
+            className="w-full p-3 mb-4 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-600"
             required
           />
           <textarea
@@ -74,25 +64,23 @@ const EventForm = ({ onSubmit }) => {
             onChange={handleChange}
             placeholder="Description"
             rows={4}
-            className="w-full p-3 mb-4 rounded bg-gray-800 text-white resize-none"
+            className="w-full p-3 mb-4 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-600 resize-none"
             required
           />
           <input
-            type="file"
-            name="image"
-            accept="image/*"
+            name="imgSrc"
+            value={formData.imgSrc}
             onChange={handleChange}
+            placeholder="Image URL"
+            className="w-full p-3 mb-6 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-600"
             required
-            className="w-full p-3 mb-6 rounded bg-gray-800 text-white"
           />
-          <div className="flex justify-center items-center mt-4">
-            <button
-              type="submit"
-              className="bg-purple-700 hover:bg-purple-900 text-white font-semibold px-6 py-2 rounded shadow-md transition w-1/2"
-            >
-              Add Event
-            </button>
-          </div>
+          <button
+            type="submit"
+            className="bg-purple-700 hover:bg-purple-900 text-white font-semibold px-6 py-2 rounded w-full shadow-md transition"
+          >
+            Add Event
+          </button>
         </form>
       )}
     </div>
